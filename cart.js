@@ -59,6 +59,9 @@ function removeFromCart(id){
   delete cart[id];
   saveCart();
   renderCart();
+  // remet le bouton "Ajouter" sur la carte produit correspondante
+  const baseId = id.split('::')[0];
+  if(typeof refreshCardAction === 'function') refreshCardAction(baseId);
 }
 function cartCount(){
   return Object.values(cart).reduce((sum, item) => sum + item.qty, 0);
@@ -89,12 +92,7 @@ function renderCart(){
         <div class="ci-icon" style="color:${p.accent || 'var(--blue)'};">${PACKS.includes(p) ? PACK_ICON : ARTICLE_ICON}</div>
         <div class="ci-info">
           <h6>${p.name}${item.color ? ' <span class="mono" style="font-size:11px; color:var(--ink-soft);">· '+item.color+'</span>' : ''}${item.trousse ? ' <span class="mono" style="font-size:11px; color:var(--ink-soft);">+ trousse</span>' : ''}</h6>
-          <span class="mono">${priceStr(p.price)}</span>
-          <div class="ci-qty">
-            <button onclick="changeQty('${id}', -1)">−</button>
-            <span>${item.qty}</span>
-            <button onclick="changeQty('${id}', 1)">+</button>
-          </div>
+          <span class="mono">${priceStr(p.price)} × ${item.qty}</span>
         </div>
         <button class="ci-remove" onclick="removeFromCart('${id}')" aria-label="Retirer">✕</button>
       </div>`;

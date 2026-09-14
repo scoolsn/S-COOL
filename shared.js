@@ -50,6 +50,11 @@ const PACKS = [
    Pour MODIFIER un prix : change la valeur "price".
    Pour AJOUTER une variante couleur : ajoute un tableau "colors:[...]". */
 const ARTICLES = [
+  /* ⭐ BEST-SELLER — produit phare S'Cool, affiché en premier.
+     Pour remplacer l'image : dépose ta photo dans images/produits/
+     sous le nom cahier-relie.webp (elle sera prise automatiquement). */
+  {id:"p100", name:"Cahier feuille blanche relié", cat:"Rangement", price:2000,
+   image:"images/produits/cahier-relie.webp", badge:"BEST-SELLER"},
   {id:"p1", name:"Crayons de couleur Color'Peps Strong x12 MAPED", cat:"Coloriage", price:1600, image:"images/produits/1.webp"},
   {id:"p2", name:"Crayons de couleur Color'Peps Mini Strong x12 MAPED", cat:"Coloriage", price:800, image:"images/produits/2.webp"},
   {id:"p3", name:"Crayon noir 2B MAPED", cat:"Écriture", price:200, image:"images/produits/3.webp"},
@@ -128,7 +133,7 @@ function togglePack(id){
 function articleCard(article){
   const hasImg = article.image && article.image.length > 0;
   const imgHtml = hasImg
-    ? `<img id="img-${article.id}" src="${article.image}" alt="${article.name}" loading="lazy" style="width:100%;height:100%;object-fit:cover;">`
+    ? `<img id="img-${article.id}" src="${article.image}" alt="${article.name}" loading="lazy">`
     : `<div class="article-noimg">${ARTICLE_ICON}<span>Photo bientôt</span></div>`;
 
   // Pastilles de couleur (si variantes)
@@ -141,24 +146,78 @@ function articleCard(article){
     ).join('') + `</div>`;
   }
 
-  const addArg = (article.colors && article.colors.length)
-    ? `'${article.id}', true` : `'${article.id}'`;
+  const badgeHtml = article.badge
+    ? `<span class="article-badge">${article.badge}</span>` : '';
 
-  return `<div class="article-card-new reveal" id="card-${article.id}">
-    <div class="article-img-wrap">${imgHtml}</div>
+  return `<div class="article-card-new reveal${article.badge ? ' is-featured' : ''}" id="card-${article.id}">
+    <div class="article-img-wrap">${badgeHtml}${imgHtml}</div>
     <div class="article-body-new">
       <span class="article-brand">${article.cat || ''}</span>
       <h4 class="article-title-new">${article.name}</h4>
       ${colorsHtml}
-      <div class="article-footer-new">
-        <span class="article-price-new">${priceStr(article.price)}</span>
-        <button class="btn btn-primary btn-sm" onclick="addToCart(${addArg})">Ajouter</button>
+      <div class="article-price-new">${priceStr(article.price)}</div>
+      <div class="article-action" id="action-${article.id}">
+        ${cardActionHtml(article.id)}
       </div>
     </div>
   </div>`;
 }
 
-// Sélection d'une couleur : change l'image + mémorise le choix
+/* ---------- QUANTITÉ SUR LA CARTE ----------
+   Affiche soit le bouton "Ajouter", soit le sélecteur [- n +]
+   selon que le produit (dans la couleur sélectionnée) est déjà au panier. */
+function cartKeyFor(id){
+  const item = findItem(id);
+  if(item && item.colors && item.colors.length){
+    const idx = selectedColors[id] != null ? selectedColors[id] : 0;
+    return id + '::' + item.colors[idx].name;
+  }
+  return id;
+}
+
+function cardActionHtml(id){
+  const key = cartKeyFor(id);
+  const inCart = (typeof cart !== 'undefined' && cart[key]) ? cart[key].qty : 0;
+  if(inCart > 0){
+    return `<div class="qty-selector">
+      <button class="qty-btn" onclick="cardQty('${id}', -1)" aria-label="Diminuer">−</button>
+      <span class="qty-num">${inCart}</span>
+      <button class="qty-btn" onclick="cardQty('${id}', 1)" aria-label="Augmenter">+</button>
+    </div>`;
+  }
+  return `<button class="btn btn-primary btn-sm btn-add" onclick="cardAdd('${id}')">Ajouter</button>`;
+}
+
+function refreshCardAction(id){
+  const el = document.getElementById('action-'+id);
+  if(el) el.innerHTML = cardActionHtml(id);
+}
+
+// Clic sur "Ajouter" : animation ✓ Ajouté puis apparition du sélecteur
+function cardAdd(id){
+  const el = document.getElementById('action-'+id);
+  const btn = el ? el.querySelector('.btn-add') : null;
+  if(btn){
+    btn.classList.add('btn-added');
+    btn.textContent = '✓ Ajouté';
+  }
+  const item = findItem(id);
+  addToCart(id, !!(item && item.colors && item.colors.length));
+  setTimeout(()=>refreshCardAction(id), 620);
+}
+
+// +/- directement sur la carte
+function cardQty(id, delta){
+  const key = cartKeyFor(id);
+  if(!cart[key]) return;
+  cart[key].qty += delta;
+  if(cart[key].qty <= 0) delete cart[key];
+  saveCart();
+  renderCart();
+  refreshCardAction(id);
+}
+
+// Sélection d'une couleur : change l'image + met à jour le compteur de CETTE couleur
 const selectedColors = {};
 function selectColor(id, idx){
   const item = findItem(id);
@@ -171,6 +230,7 @@ function selectColor(id, idx){
     card.querySelectorAll('.color-dot').forEach((d,i)=>
       d.classList.toggle('active', i===idx));
   }
+  refreshCardAction(id); // le compteur suit la couleur sélectionnée
 }
 
 /* ---------- UTILITAIRES PARTAGÉS (nav, toast, scroll-reveal) ---------- */

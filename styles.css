@@ -659,3 +659,170 @@
     gap:6px; color:var(--ink-soft); opacity:0.5; height:100%;
   }
   .article-noimg span{font-size:11px; font-family:'IBM Plex Mono',monospace;}
+
+/* ==========================================================================
+   REFONTE UX — badge best-seller, quantité sur carte, paiement, mobile
+   ========================================================================== */
+
+/* ---- Images produits : afficher le produit ENTIER, pas rogné ---- */
+.article-img-wrap{
+  background:var(--white);
+  position:relative;
+  padding:10px;
+}
+.article-img-wrap img{
+  width:100%; height:100%;
+  object-fit:contain;          /* produit entier, jamais coupé */
+}
+
+/* ---- Badge BEST-SELLER ---- */
+.article-badge{
+  position:absolute; top:10px; left:10px; z-index:2;
+  background:var(--yellow); color:var(--blue);
+  font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600;
+  letter-spacing:0.06em; padding:5px 10px; border-radius:100px;
+  box-shadow:0 4px 12px -4px rgba(0,0,0,0.25);
+}
+.article-card-new.is-featured{
+  border-color:var(--yellow);
+  box-shadow:0 8px 28px -12px rgba(246,185,10,0.45);
+}
+
+/* ---- Prix en pleine largeur au-dessus de l'action ---- */
+.article-price-new{
+  font-family:'League Spartan',sans-serif; font-weight:700;
+  font-size:17px; color:var(--blue); margin-bottom:10px;
+}
+.article-action{margin-top:auto;}
+.article-action .btn{width:100%; justify-content:center;}
+
+/* ---- Bouton Ajouter : animation de confirmation ---- */
+.btn-add{transition:background .25s ease, transform .18s ease;}
+.btn-added{
+  background:#1F7A3D !important; color:#fff !important;
+  animation:pop-added .45s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes pop-added{
+  0%{transform:scale(1);}
+  45%{transform:scale(1.08);}
+  100%{transform:scale(1);}
+}
+
+/* ---- Sélecteur de quantité sur la carte ---- */
+.qty-selector{
+  display:flex; align-items:center; justify-content:space-between;
+  background:var(--blue-pale); border-radius:100px;
+  padding:4px; width:100%;
+  animation:fade-in-qty .3s ease;
+}
+@keyframes fade-in-qty{from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:translateY(0);}}
+.qty-btn{
+  width:34px; height:34px; border-radius:100px; border:none;
+  background:var(--white); color:var(--blue); cursor:pointer;
+  font-size:19px; font-weight:600; line-height:1;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 2px 6px -2px rgba(22,48,91,0.2);
+  transition:transform .15s ease;
+}
+.qty-btn:hover{transform:scale(1.08);}
+.qty-btn:active{transform:scale(0.94);}
+.qty-num{
+  font-family:'League Spartan',sans-serif; font-weight:700;
+  font-size:16px; color:var(--blue); min-width:28px; text-align:center;
+}
+
+/* ---- Réassurance paiement dans le panier ---- */
+.cart-reassurance{
+  background:var(--cream); border:1px dashed var(--line);
+  border-radius:14px; padding:12px 14px; margin-bottom:14px;
+  display:flex; flex-direction:column; align-items:center; gap:8px;
+}
+.cr-label{
+ display: none; 
+}
+.cr-logos{display:flex; align-items:center; gap:12px;}
+.cr-logos img{
+  height:26px; width:auto; opacity:0.72;
+  transition:opacity .2s ease;
+}
+.cr-logos img:hover{opacity:1;}
+.cr-cash{
+  font-size:11.5px; font-weight:600; color:var(--ink-soft);
+  background:var(--blue-pale); border-radius:100px; padding:4px 10px;
+  opacity:0.8;
+}
+.cr-delivery{
+ display: none;}
+
+/* ---- Titres de section boutique ---- */
+.shop-section-title{
+  font-family:'League Spartan',sans-serif; font-size:20px;
+  color:var(--blue); margin:8px 0 16px;
+}
+
+/* ---- Bande de packs scrollable (mobile) ---- */
+.packs-strip{
+  display:grid; grid-template-columns:repeat(4,1fr); gap:20px;
+  margin-bottom:40px;
+}
+
+/* ---- Bouton recherche : texte sur desktop, loupe sur mobile ---- */
+.shop-search button{flex-shrink:0; white-space:nowrap;}
+.search-btn-icon{display:none;}
+
+/* ==========================================================================
+   MOBILE (≤ 640px)
+   ========================================================================== */
+@media (max-width:640px){
+
+  /* Grille articles : 2 colonnes serrées */
+  .article-grid{grid-template-columns:repeat(2,1fr); gap:10px;}
+  .article-body-new{padding:10px 11px 12px;}
+  .article-title-new{font-size:12.5px; -webkit-line-clamp:2;}
+  .article-desc-new{display:none;}
+  .article-price-new{font-size:15px; margin-bottom:8px;}
+  .article-brand{font-size:9px; margin-bottom:3px;}
+  .article-badge{font-size:9px; padding:4px 8px; top:8px; left:8px;}
+
+  /* Zones tactiles plus grandes */
+  .article-action .btn{padding:12px 14px; font-size:13.5px;}
+  .qty-btn{width:36px; height:36px; font-size:20px;}
+  .qty-num{font-size:15px;}
+
+  /* Recherche : bouton rond avec loupe uniquement */
+  .shop-search{padding:5px 5px 5px 16px; gap:8px;}
+  .shop-search input{font-size:15px; min-width:0;}
+  .search-btn-text{display:none;}
+  .search-btn-icon{display:block;}
+  .shop-search button{
+    width:44px; height:44px; border-radius:50%;
+    padding:0; display:flex; align-items:center; justify-content:center;
+  }
+
+  /* CTA hero pleine largeur */
+  .hero-ctas{flex-direction:column; align-items:stretch; gap:10px; padding:0 4px;}
+  .hero-ctas .btn{width:100%; justify-content:center; padding:16px 20px; font-size:15.5px;}
+
+  /* Packs en bande scrollable horizontale */
+  .packs-strip{
+    display:flex; overflow-x:auto; gap:14px;
+    grid-template-columns:none;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    padding-bottom:12px; margin-bottom:28px;
+    scrollbar-width:none;
+  }
+  .packs-strip::-webkit-scrollbar{display:none;}
+  .packs-strip .pack-card{
+    flex:0 0 78%; scroll-snap-align:start;
+  }
+  .shop-section-title{font-size:18px; margin:4px 0 12px;}
+
+  /* Pas de débordement horizontal */
+  body{overflow-x:hidden;}
+  .wrap{max-width:100%;}
+
+  /* Réassurance plus compacte */
+  .cart-reassurance{padding:10px 12px; gap:6px;}
+  .cr-logos img{height:22px;}
+}

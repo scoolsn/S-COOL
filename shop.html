@@ -66,9 +66,12 @@
   <div class="wrap">
 
     <div class="shop-search reveal">
-      <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.6"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-      <input type="text" id="shopSearch" placeholder="Rechercher un produit (ex: gomme, compas, surligneur...)">
-      <button onclick="runSearch()">Rechercher</button>
+      <svg class="search-lead-icon" width="17" height="17" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.6"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <input type="text" id="shopSearch" placeholder="Rechercher un produit...">
+      <button onclick="runSearch()" aria-label="Rechercher">
+        <span class="search-btn-text">Rechercher</span>
+        <svg class="search-btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
     </div>
 
     <p style="text-align:center; color:var(--ink-soft); font-size:14px; margin-bottom:28px;">Défile, compare — et commande directement sur WhatsApp.</p>
@@ -79,6 +82,13 @@
       <span class="shop-tab" data-cat="Tous">Tout voir</span>
     </div>
 
+    <!-- Section PACKS (visible en mode "Tout voir") -->
+    <div id="packsSection" style="display:none;">
+      <h3 class="shop-section-title">Nos packs</h3>
+      <div class="packs-strip" id="packsStrip"></div>
+    </div>
+
+    <h3 class="shop-section-title" id="articlesTitle" style="display:none;">Nos articles</h3>
     <div class="article-grid" id="shopGrid"></div>
 
     <div class="shop-empty" id="shopEmpty" style="display:none;">
@@ -150,6 +160,15 @@
   </div>
   <div class="cart-items" id="cartItems"></div>
   <div class="cart-foot">
+    <div class="cart-reassurance">
+      <span class="cr-label">Paiement accepté</span>
+      <div class="cr-logos">
+        <img src="images/paiement/wave.webp" alt="Wave" loading="lazy">
+        <img src="images/paiement/orange-money.webp" alt="Orange Money" loading="lazy">
+        <span class="cr-cash">Espèces</span>
+      </div>
+      <span class="cr-delivery">Livraison Dakar sous 48h</span>
+    </div>
     <div class="cart-total-row">
       <span>Total</span>
       <span class="price" id="cartTotal">0 FCFA</span>
