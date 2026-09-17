@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://madiop19.github.io/S-COOL/sitemap.xml
+Sitemap: https://scoolsn.github.io/S-COOL/sitemap.xml
