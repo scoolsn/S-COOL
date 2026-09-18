@@ -31,7 +31,7 @@ const PACKS = [
     items:["3 stylos rouges","4 stylos bleus","2 stylos noirs","2 stylos verts","1 stylo 4 couleurs (BIC)","2 crayons noirs avec gomme","2 crayons noirs sans gomme (MAPED Hb2)","2 gommes (MAPED grand + petit modèle)","1 taille-crayon","1 kit de traçage (MAPED Twist'n Flex, grand modèle)","1 compas avec crayon (MAPED Study)","1 règle 20cm flexible (MAPED Twist'n Flex)","2 correcteurs liquides","1 paquet de crayons de couleur (MAPED Color'Peps grand modèle)","1 scotch","1 tube de colle","1 critérium + recharge","1 paquet de surligneurs (pack de 4)"]
   },
   {
-    id:"pack-etudiant", name:"Étudiant", price:16900, accent:"#B7D9E8", badge:"New", brands:["SCHNEIDER", "MAPED", "LINC", "Exacompta"],
+    id:"pack-etudiant", name:"Étudiant", price:17900, accent:"#B7D9E8", badge:"New", brands:["SCHNEIDER", "MAPED", "LINC", "Exacompta"],
     desc:"Pensé pour le collège/lycée : de quoi écrire, classer et t'organiser.",
     items:["3 stylos rouges","4 stylos bleus","2 stylos noirs","1 stylo 4 couleurs (SCHNEIDER)","3 crayons noirs (MAPED Hb2)","2 gommes","1 taille-crayon","1 kit de traçage (MAPED, grand modèle)","1 règle incassable","2 correcteurs liquides","1 critérium + 2 recharges","1 paquet de surligneurs (MAPED couleur pastel)","1 agrafeuse + recharge (MAPED)","1 paquet de 12 stylos de couleur (LINC)","1 porte-vue 100 vues ou trieur (Exacompta)","1 cahier A4 200 pages 🎁"]
   },
@@ -53,7 +53,7 @@ const ARTICLES = [
   /* ⭐ BEST-SELLER — produit phare S'Cool, affiché en premier.
      Pour remplacer l'image : dépose ta photo dans images/produits/
      sous le nom cahier-relie.webp (elle sera prise automatiquement). */
-  {id:"p100", name:"Cahier feuille blanche relié", cat:"Rangement", price:2000,
+  {id:"p100", name:"La SPECIALE — Cahier feuille blanche relié", cat:"Rangement", price:2000,
    image:"images/produits/cahier-relie.webp", badge:"BEST-SELLER"},
   {id:"p1", name:"Crayons de couleur Color'Peps Strong x12 MAPED", cat:"Coloriage", price:1600, image:"images/produits/1.webp"},
   {id:"p2", name:"Crayons de couleur Color'Peps Mini Strong x12 MAPED", cat:"Coloriage", price:800, image:"images/produits/2.webp"},
