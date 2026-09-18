@@ -6,11 +6,30 @@
    script propre à chaque page (script.js ou shop.js).
    ========================================================================== */
 
+/* ---------- CONTACT : un seul endroit à modifier ---------- */
+const WA_NUMBER = '221762098743';
+function waLink(text){
+  return 'https://wa.me/' + WA_NUMBER + (text ? '?text=' + encodeURIComponent(text) : '');
+}
+
 function priceStr(p){ return p.toLocaleString('fr-FR') + ' FCFA'; }
 
-const PACK_ICON = `<svg width="30" height="30" viewBox="0 0 24 24" fill="none"><rect x="4" y="7" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M4 11h16" stroke="currentColor" stroke-width="1.2"/><path d="M9 7V5.5a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 5.5V7" stroke="currentColor" stroke-width="1.5"/></svg>`;
+/* Normalisation pour la recherche : minuscules SANS accents.
+   Indispensable ici : au clavier téléphone les clients tapent "regle",
+   "crayon de couleur", "etudiant" — sans accents. */
+function norm(s){
+  return (s || '').toString().toLowerCase()
+    .normalize('NFD').replace(/[̀-ͯ]/g, '');
+}
 
-const ARTICLE_ICON = `<svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="5" y="3" width="14" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.3"/></svg>`;
+const PACK_ICON = `<svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="7" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M4 11h16" stroke="currentColor" stroke-width="1.2"/><path d="M9 7V5.5a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 5.5V7" stroke="currentColor" stroke-width="1.5"/></svg>`;
+
+const ARTICLE_ICON = `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.3"/></svg>`;
+
+/* Vrai glyphe WhatsApp (l'ancien SVG du site était un simple cercle). */
+function waIcon(size){
+  return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.89-.79-1.48-1.76-1.66-2.06-.17-.3-.02-.46.13-.6.14-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.91-2.21-.25-.58-.49-.5-.67-.51h-.57c-.2 0-.52.08-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.42-.08-.12-.27-.2-.57-.34M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.89 9.89-9.89 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.43 9.89-9.88 9.89m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45h.005c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.17-3.48-8.42"/></svg>`;
+}
 
 /* ---------- LES 4 VRAIS PACKS ----------
    Pour AJOUTER un pack : copie un objet {...} en entier (de { à },),
@@ -46,13 +65,13 @@ const PACKS = [
    Source : base de stock réelle S'Cool — 35 produits.
    Prix de vente arrondis à la valeur ronde supérieure.
    Images : dossier images/produits/ (format .webp).
-   Certaines images manquent (p9, p31, p32, p35) → placeholder générique.
+   Photos encore manquantes (p9, p30, p31, p32, p35) → image:"" affiche
+   le placeholder "Photo bientôt". Dès que la photo est prise, il suffit
+   de remettre le chemin ici.
    Pour MODIFIER un prix : change la valeur "price".
    Pour AJOUTER une variante couleur : ajoute un tableau "colors:[...]". */
 const ARTICLES = [
-  /* ⭐ BEST-SELLER — produit phare S'Cool, affiché en premier.
-     Pour remplacer l'image : dépose ta photo dans images/produits/
-     sous le nom cahier-relie.webp (elle sera prise automatiquement). */
+  /* ⭐ BEST-SELLER — produit phare S'Cool, affiché en premier. */
   {id:"p100", name:"Cahier feuille blanche relié", cat:"Rangement", price:2000,
    image:"images/produits/cahier-relie.webp", badge:"BEST-SELLER"},
   {id:"p1", name:"Crayons de couleur Color'Peps Strong x12 MAPED", cat:"Coloriage", price:1600, image:"images/produits/1.webp"},
@@ -84,7 +103,7 @@ const ARTICLES = [
   {id:"p27", name:"Stylo à bille vert BIC Cristal", cat:"Écriture", price:150, image:"images/produits/27.webp"},
   {id:"p28", name:"Kit de traçage 15cm 4pcs MAPED", cat:"Traçage", price:700, image:"images/produits/28.webp"},
   {id:"p29", name:"Correcteur liquide", cat:"Correction", price:250, image:"images/produits/29.webp"},
-  {id:"p30", name:"Scotch", cat:"Papeterie", price:350, image:"images/produits/30.webp"},
+  {id:"p30", name:"Scotch", cat:"Papeterie", price:350, image:""},
   {id:"p31", name:"Critérium 0,7mm", cat:"Écriture", price:850, image:""},
   {id:"p32", name:"Mines 0,7mm MAPED", cat:"Écriture", price:350, image:""},
   {id:"p33", name:"Lot de 12 stylos gel multicolores LINC Pentonic", cat:"Écriture", price:2500, image:"images/produits/33.webp"},
@@ -92,56 +111,73 @@ const ARTICLES = [
   {id:"p35", name:"Notebook A4", cat:"Rangement", price:2500, image:""}
 ];
 
+/* Catégories déduites des données : pas de liste à maintenir à la main.
+   Ajoute un article avec une nouvelle "cat" et le filtre apparaît tout seul. */
+const CATEGORIES = [...new Set(ARTICLES.map(a => a.cat).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'fr'));
+
 function findItem(id){
   // Les variantes couleur utilisent une clé composite "p10::Orange" → on retrouve le produit de base
-  const baseId = id.split('::')[0];
+  const baseId = String(id).split('::')[0];
   return PACKS.find(p => p.id === baseId) || ARTICLES.find(a => a.id === baseId);
 }
 
+/* Échappe le texte injecté dans un attribut HTML (noms de produits avec apostrophes). */
+function attr(s){
+  return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+/* ---------- CARTES PACK ---------- */
 function packCard(pack){
-  return `<div class="pack-card reveal" style="--accent:${pack.accent};">
+  return `<article class="pack-card reveal" style="--accent:${pack.accent};">
     ${pack.badge ? `<span class="product-badge">${pack.badge}</span>` : ''}
     <div class="pack-icon">${PACK_ICON}</div>
     <h3>${pack.name}</h3>
     <p class="pack-desc">${pack.desc}</p>
     <div class="pack-price">${priceStr(pack.price)}</div>
     ${pack.brands ? `<div class="pack-brands">${pack.brands.map(b=>`<span>${b}</span>`).join('')}</div>` : ''}
-    <button class="pack-toggle" onclick="togglePack('${pack.id}')">
-      <span id="toggleLabel-${pack.id}">Voir le contenu (${pack.items.length} articles)</span>
-      <svg id="toggleIcon-${pack.id}" width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <button type="button" class="pack-toggle" aria-expanded="false" aria-controls="packItems-${pack.id}" onclick="togglePack('${pack.id}')">
+      <span>Voir le contenu (${pack.items.length} articles)</span>
+      <svg id="toggleIcon-${pack.id}" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
     <ul class="pack-items" id="packItems-${pack.id}">
       ${pack.items.map(i=>`<li>${i}</li>`).join('')}
     </ul>
     <label class="pack-trousse">
       <input type="checkbox" id="trousse-${pack.id}">
-      + Ajouter une trousse (prix confirmé sur WhatsApp)
+      <span>+ Ajouter une trousse <span class="note">(prix confirmé sur WhatsApp)</span></span>
     </label>
-    <button class="btn btn-primary btn-block" onclick="addToCart('${pack.id}')">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 4h2l1.6 9.6a2 2 0 0 0 2 1.6h7.4a2 2 0 0 0 2-1.6L20 8H7" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="20" r="1.3" fill="#fff"/><circle cx="17" cy="20" r="1.3" fill="#fff"/></svg>
-      Ajouter au panier
-    </button>
-  </div>`;
+    <div class="article-action" id="action-${pack.id}">${cardActionHtml(pack.id)}</div>
+  </article>`;
 }
+
+/* Ouverture/fermeture sur la hauteur réelle du contenu : plus de liste
+   tronquée quand un pack dépasse une hauteur maximale arbitraire. */
 function togglePack(id){
   const list = document.getElementById('packItems-'+id);
   const icon = document.getElementById('toggleIcon-'+id);
-  list.classList.toggle('open');
-  icon.style.transform = list.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0)';
+  const btn  = list.previousElementSibling;
+  const open = !list.classList.contains('open');
+  list.classList.toggle('open', open);
+  list.style.maxHeight = open ? list.scrollHeight + 'px' : '0px';
+  if(icon) icon.style.transform = open ? 'rotate(180deg)' : 'rotate(0)';
+  if(btn) btn.setAttribute('aria-expanded', String(open));
 }
 
+/* ---------- CARTES ARTICLE ---------- */
 function articleCard(article){
   const hasImg = article.image && article.image.length > 0;
+  // onerror : si un fichier image manque, on retombe sur le placeholder
+  // au lieu d'afficher l'icône « image cassée » du navigateur.
   const imgHtml = hasImg
-    ? `<img id="img-${article.id}" src="${article.image}" alt="${article.name}" loading="lazy">`
-    : `<div class="article-noimg">${ARTICLE_ICON}<span>Photo bientôt</span></div>`;
+    ? `<img id="img-${article.id}" src="${article.image}" alt="${attr(article.name)}" loading="lazy" decoding="async"
+         onerror="productImgFallback(this)">`
+    : noImgHtml();
 
-  // Pastilles de couleur (si variantes)
   let colorsHtml = '';
   if(article.colors && article.colors.length){
-    colorsHtml = `<div class="article-colors">` + article.colors.map((c,i)=>
-      `<button class="color-dot${i===0?' active':''}" style="background:${c.hex}"
-        title="${c.name}" aria-label="${c.name}"
+    colorsHtml = `<div class="article-colors" role="group" aria-label="Couleur">` + article.colors.map((c,i)=>
+      `<button type="button" class="color-dot${i===0?' active':''}" style="background:${c.hex}"
+        title="${attr(c.name)}" aria-label="${attr(c.name)}"
         onclick="selectColor('${article.id}', ${i})"></button>`
     ).join('') + `</div>`;
   }
@@ -149,18 +185,31 @@ function articleCard(article){
   const badgeHtml = article.badge
     ? `<span class="article-badge">${article.badge}</span>` : '';
 
-  return `<div class="article-card-new reveal${article.badge ? ' is-featured' : ''}" id="card-${article.id}">
-    <div class="article-img-wrap">${badgeHtml}${imgHtml}</div>
+  return `<article class="article-card-new reveal${article.badge ? ' is-featured' : ''}" id="card-${article.id}">
+    <button type="button" class="article-img-wrap" onclick="openProduct('${article.id}')" aria-label="Voir ${attr(article.name)}">${badgeHtml}${imgHtml}</button>
     <div class="article-body-new">
       <span class="article-brand">${article.cat || ''}</span>
-      <h4 class="article-title-new">${article.name}</h4>
+      <h4 class="article-title-new">
+        <button type="button" class="article-title-btn" onclick="openProduct('${article.id}')">${article.name}</button>
+      </h4>
       ${colorsHtml}
       <div class="article-price-new">${priceStr(article.price)}</div>
       <div class="article-action" id="action-${article.id}">
         ${cardActionHtml(article.id)}
       </div>
     </div>
-  </div>`;
+  </article>`;
+}
+
+function noImgHtml(){
+  return `<span class="article-noimg">${ARTICLE_ICON}<span>Photo bientôt</span></span>`;
+}
+
+/* Photo introuvable (fichier supprimé, chemin faux) : on affiche le
+   placeholder plutôt que l'icône « image cassée » du navigateur. */
+function productImgFallback(img){
+  const wrap = img.closest('.article-img-wrap') || img.parentElement;
+  if(wrap) wrap.innerHTML = noImgHtml();
 }
 
 /* ---------- QUANTITÉ SUR LA CARTE ----------
@@ -180,27 +229,27 @@ function cardActionHtml(id){
   const inCart = (typeof cart !== 'undefined' && cart[key]) ? cart[key].qty : 0;
   if(inCart > 0){
     return `<div class="qty-selector">
-      <button class="qty-btn" onclick="cardQty('${id}', -1)" aria-label="Diminuer">−</button>
-      <span class="qty-num">${inCart}</span>
-      <button class="qty-btn" onclick="cardQty('${id}', 1)" aria-label="Augmenter">+</button>
+      <button type="button" class="qty-btn" onclick="cardQty('${id}', -1)" aria-label="Diminuer la quantité">−</button>
+      <span class="qty-num" aria-live="polite">${inCart}</span>
+      <button type="button" class="qty-btn" onclick="cardQty('${id}', 1)" aria-label="Augmenter la quantité">+</button>
     </div>`;
   }
-  return `<button class="btn btn-primary btn-sm btn-add" onclick="cardAdd('${id}')">Ajouter</button>`;
+  return `<button type="button" class="btn btn-outline btn-sm btn-add btn-block" onclick="cardAdd('${id}')">Ajouter</button>`;
 }
 
 function refreshCardAction(id){
   const el = document.getElementById('action-'+id);
   if(el) el.innerHTML = cardActionHtml(id);
+  const modalAction = document.getElementById('modalAction');
+  if(modalAction && modalAction.dataset.id === id) modalAction.innerHTML = cardActionHtml(id);
 }
 
 // Clic sur "Ajouter" : animation ✓ Ajouté puis apparition du sélecteur
 function cardAdd(id){
-  const el = document.getElementById('action-'+id);
-  const btn = el ? el.querySelector('.btn-add') : null;
-  if(btn){
+  document.querySelectorAll('#action-'+CSS.escape(id)+' .btn-add, #modalAction .btn-add').forEach(btn=>{
     btn.classList.add('btn-added');
     btn.textContent = '✓ Ajouté';
-  }
+  });
   const item = findItem(id);
   addToCart(id, !!(item && item.colors && item.colors.length));
   setTimeout(()=>refreshCardAction(id), 620);
@@ -223,26 +272,114 @@ function selectColor(id, idx){
   const item = findItem(id);
   if(!item || !item.colors) return;
   selectedColors[id] = idx;
-  const img = document.getElementById('img-'+id);
-  if(img && item.colors[idx].image) img.src = item.colors[idx].image;
-  const card = document.getElementById('card-'+id);
-  if(card){
-    card.querySelectorAll('.color-dot').forEach((d,i)=>
-      d.classList.toggle('active', i===idx));
-  }
+  [document.getElementById('img-'+id), document.getElementById('modalImg')].forEach(img=>{
+    if(img && item.colors[idx].image) img.src = item.colors[idx].image;
+  });
+  ['#card-'+CSS.escape(id), '#modalColors'].forEach(sel=>{
+    const group = document.querySelector(sel);
+    if(!group) return;
+    group.querySelectorAll('.color-dot').forEach((d,i)=> d.classList.toggle('active', i === idx));
+  });
   refreshCardAction(id); // le compteur suit la couleur sélectionnée
 }
 
-/* ---------- UTILITAIRES PARTAGÉS (nav, toast, scroll-reveal) ---------- */
+/* ==========================================================================
+   FICHE PRODUIT (modale)
+   La carte tronque le nom à 2 lignes ; la fiche permet enfin de lire le nom
+   complet, de voir la photo en grand et de choisir la couleur.
+   ========================================================================== */
+function ensureProductModal(){
+  if(document.getElementById('productModal')) return;
+  const el = document.createElement('div');
+  el.innerHTML = `
+    <div class="modal-overlay" id="modalOverlay" onclick="closeProduct()"></div>
+    <div class="product-modal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+      <button type="button" class="modal-close" onclick="closeProduct()" aria-label="Fermer la fiche produit">✕</button>
+      <div class="modal-media" id="modalMedia"></div>
+      <div class="modal-body">
+        <span class="article-brand" id="modalCat"></span>
+        <h3 id="modalTitle"></h3>
+        <div id="modalColors"></div>
+        <div class="modal-price" id="modalPrice"></div>
+        <div class="article-action" id="modalAction"></div>
+        <a class="modal-ask" id="modalAsk" target="_blank" rel="noopener">${waIcon(15)} Une question sur ce produit ?</a>
+        <p class="modal-note">Paiement Wave, Orange Money ou espèces à la livraison · Dakar sous 48h</p>
+      </div>
+    </div>`;
+  document.body.appendChild(el);
+}
+
+let lastFocused = null;
+function openProduct(id){
+  const a = findItem(id);
+  if(!a) return;
+  ensureProductModal();
+  lastFocused = document.activeElement;
+  const idx = selectedColors[id] != null ? selectedColors[id] : 0;
+  const src = (a.colors && a.colors[idx] && a.colors[idx].image) || a.image;
+
+  document.getElementById('modalMedia').innerHTML = src
+    ? `<img id="modalImg" src="${src}" alt="${attr(a.name)}">`
+    : noImgHtml();
+  document.getElementById('modalCat').textContent = a.cat || '';
+  document.getElementById('modalTitle').textContent = a.name;
+  document.getElementById('modalPrice').textContent = priceStr(a.price);
+  document.getElementById('modalColors').innerHTML = (a.colors && a.colors.length)
+    ? `<div class="article-colors" id="modalColorDots" role="group" aria-label="Couleur">` + a.colors.map((c,i)=>
+        `<button type="button" class="color-dot${i===idx?' active':''}" style="background:${c.hex}"
+          title="${attr(c.name)}" aria-label="${attr(c.name)}" onclick="selectColor('${a.id}', ${i})"></button>`).join('') + `</div>`
+    : '';
+  const action = document.getElementById('modalAction');
+  action.dataset.id = id;
+  action.innerHTML = cardActionHtml(id);
+  document.getElementById('modalAsk').href = waLink(`Bonjour S'Cool, j'ai une question sur : ${a.name} (${priceStr(a.price)}).`);
+
+  document.getElementById('productModal').classList.add('open');
+  document.getElementById('productModal').setAttribute('aria-hidden','false');
+  document.getElementById('modalOverlay').classList.add('open');
+  lockScroll(true);
+  document.querySelector('#productModal .modal-close').focus();
+}
+
+function closeProduct(){
+  const m = document.getElementById('productModal');
+  if(!m) return;
+  m.classList.remove('open');
+  m.setAttribute('aria-hidden','true');
+  document.getElementById('modalOverlay').classList.remove('open');
+  lockScroll(false);
+  if(lastFocused && lastFocused.focus) lastFocused.focus();
+}
+
+/* ---------- UTILITAIRES PARTAGÉS (scroll, nav, toast, reveal) ---------- */
+
+/* Un seul endroit verrouille le scroll : sinon fermer le panier
+   déverrouillait le scroll alors que le menu burger était encore ouvert. */
+const scrollLocks = new Set();
+function lockScroll(on, key){
+  const k = key || 'default';
+  if(on) scrollLocks.add(k); else scrollLocks.delete(k);
+  document.body.classList.toggle('scroll-locked', scrollLocks.size > 0);
+}
+
 function closeMenu(){
   const m = document.getElementById('mmenu');
+  if(!m) return;
   m.classList.remove('open');
   document.body.classList.remove('menu-open');
+  const b = document.querySelector('.burger');
+  if(b) b.setAttribute('aria-expanded','false');
+  lockScroll(false, 'menu');
 }
 function openMenu(){
   const m = document.getElementById('mmenu');
-  m.classList.toggle('open');
-  document.body.classList.toggle('menu-open', m.classList.contains('open'));
+  if(!m) return;
+  const open = !m.classList.contains('open');
+  m.classList.toggle('open', open);
+  document.body.classList.toggle('menu-open', open);
+  const b = document.querySelector('.burger');
+  if(b) b.setAttribute('aria-expanded', String(open));
+  lockScroll(open, 'menu');
 }
 
 // Fermeture burger au clic extérieur
@@ -250,26 +387,115 @@ document.addEventListener('click', function(e){
   const menu = document.getElementById('mmenu');
   const burger = document.querySelector('.burger');
   if(menu && menu.classList.contains('open')){
-    if(!menu.contains(e.target) && !burger.contains(e.target)){
+    if(!menu.contains(e.target) && burger && !burger.contains(e.target)){
       closeMenu();
     }
   }
 });
 
-// Fermeture panier au clic sur l'overlay
-document.addEventListener('DOMContentLoaded', function(){
-  const overlay = document.getElementById('cartOverlay');
-  if(overlay) overlay.addEventListener('click', closeCart);
+// Échap ferme, dans l'ordre : la fiche produit, le panier, le menu.
+document.addEventListener('keydown', function(e){
+  if(e.key !== 'Escape') return;
+  const modal = document.getElementById('productModal');
+  if(modal && modal.classList.contains('open')){ closeProduct(); return; }
+  const drawer = document.getElementById('cartDrawer');
+  if(drawer && drawer.classList.contains('open')){ closeCart(); return; }
+  const menu = document.getElementById('mmenu');
+  if(menu && menu.classList.contains('open')) closeMenu();
 });
+
 function showToast(msg){
   const t = document.getElementById('toast');
+  if(!t) return;
   t.textContent = msg; t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'), 3200);
+  clearTimeout(showToast._t);
+  showToast._t = setTimeout(()=>t.classList.remove('show'), 3200);
 }
+
+/* Un SEUL observateur pour toute la page, réutilisé à chaque rendu.
+   Avant : un nouvel IntersectionObserver était créé à chaque frappe dans
+   la recherche (6 lettres = 6 observateurs jamais libérés). */
+let _revealObserver = null;
 function observeReveals(){
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const els = document.querySelectorAll('.reveal:not(.in-view), .highlight:not(.in-view)');
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in-view'); io.unobserve(en.target);} });
-  }, {threshold:0.12});
-  els.forEach(el=>io.observe(el));
+  if(reduce || !('IntersectionObserver' in window)){
+    els.forEach(el => el.classList.add('in-view'));
+    return;
+  }
+  if(!_revealObserver){
+    _revealObserver = new IntersectionObserver((entries)=>{
+      entries.forEach(en=>{
+        if(en.isIntersecting){ en.target.classList.add('in-view'); _revealObserver.unobserve(en.target); }
+      });
+    }, {threshold:0.12});
+  }
+  els.forEach(el=>_revealObserver.observe(el));
 }
+
+/* Filet de sécurité : si le JS plante ou qu'un navigateur ancien n'a pas
+   IntersectionObserver, .reveal{opacity:0} rendrait TOUTE la page invisible.
+   On force l'affichage au bout de 2,5s quoi qu'il arrive. */
+setTimeout(()=>{
+  document.querySelectorAll('.reveal:not(.in-view)').forEach(el=>el.classList.add('in-view'));
+}, 2500);
+
+/* Bouton WhatsApp flottant : le CSS existait déjà, le bouton n'était
+   sur aucune page. Injecté ici pour être présent partout. */
+document.addEventListener('DOMContentLoaded', function(){
+  if(document.querySelector('.wa-float')) return;
+  const a = document.createElement('a');
+  a.className = 'wa-float';
+  a.href = waLink("Bonjour S'Cool, j'aurais une question.");
+  a.target = '_blank';
+  a.rel = 'noopener';
+  a.setAttribute('aria-label', 'Nous écrire sur WhatsApp');
+  a.innerHTML = waIcon(26);
+  document.body.appendChild(a);
+});
+
+/* ---------- Glyphe WhatsApp injecté là où il est marqué ----------
+   Évite de recopier 40 lignes de SVG dans chaque bouton des deux pages. */
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('[data-wa-icon]').forEach(el=>{
+    el.insertAdjacentHTML('afterbegin', waIcon(parseInt(el.dataset.waIcon,10) || 16));
+  });
+});
+
+/* ---------- Données structurées produits (SEO) ----------
+   Générées à partir de PACKS / ARTICLES : une seule source de vérité,
+   donc aucun risque que le prix du balisage diverge du prix affiché.
+   Google exécute le JavaScript pour lire ce balisage. */
+document.addEventListener('DOMContentLoaded', function(){
+  const BASE = 'https://scoolsn.github.io/S-COOL/';
+  const all = [...PACKS, ...ARTICLES];
+  const data = {
+    "@context":"https://schema.org",
+    "@type":"ItemList",
+    "name":"Catalogue S'Cool",
+    "numberOfItems": all.length,
+    "itemListElement": all.map((p,i)=>({
+      "@type":"ListItem",
+      "position": i+1,
+      "item": {
+        "@type":"Product",
+        "name": p.name + (PACKS.includes(p) ? ' — Pack de rentrée S’Cool' : ''),
+        "description": p.desc || `${p.name} — ${p.cat || 'fourniture scolaire'} disponible chez S'Cool à Dakar.`,
+        "category": p.cat || 'Pack de rentrée',
+        ...(p.image ? {"image": BASE + p.image} : {}),
+        "offers": {
+          "@type":"Offer",
+          "price": p.price,
+          "priceCurrency":"XOF",
+          "availability":"https://schema.org/InStock",
+          "url": BASE + 'shop.html',
+          "seller":{"@type":"Organization","name":"S'Cool"}
+        }
+      }
+    }))
+  };
+  const tag = document.createElement('script');
+  tag.type = 'application/ld+json';
+  tag.textContent = JSON.stringify(data);
+  document.head.appendChild(tag);
+});

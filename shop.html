@@ -1,6 +1,32 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boutique — Fournitures scolaires à Dakar | S'Cool</title>
+<meta name="description" content="Tous les packs et articles S'Cool : stylos, cahiers, traçage, coloriage. Filtrez par catégorie, commandez sur WhatsApp, livraison à Dakar sous 48h.">
+<link rel="canonical" href="https://scoolsn.github.io/S-COOL/shop.html">
+<meta name="theme-color" content="#1B3624">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_SN">
+<meta property="og:site_name" content="S'Cool">
+<meta property="og:title" content="Boutique — S'Cool">
+<meta property="og:description" content="Tous nos Packs de rentrée et articles S'Cool. Commande directe sur WhatsApp.">
+<meta property="og:url" content="https://scoolsn.github.io/S-COOL/shop.html">
+<meta property="og:image" content="https://scoolsn.github.io/S-COOL/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Boutique — S'Cool">
+<meta name="twitter:description" content="Tous nos Packs de rentrée et articles S'Cool. Commande directe sur WhatsApp.">
+<meta name="twitter:image" content="https://scoolsn.github.io/S-COOL/images/og-image.jpg">
+<link rel="icon" type="image/png" sizes="32x32" href="images/scoollogopng/favicon-32.png">
+<link rel="apple-touch-icon" href="images/scoollogopng/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400..800&family=Alice&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZF3CPQ8E2L"></script>
 <script>
@@ -9,48 +35,31 @@
   gtag('js', new Date());
   gtag('config', 'G-ZF3CPQ8E2L');
 </script>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Boutique — S'Cool</title>
-<meta name="description" content="Tous les packs et articles S'Cool : fournitures scolaires premium, commande directe sur WhatsApp, livraison à Dakar sous 48h.">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="S'Cool">
-<meta property="og:title" content="Boutique — S'Cool">
-<meta property="og:description" content="Tous nos Packs de rentrée et articles S'Cool. Commande directe sur WhatsApp.">
-<meta property="og:url" content="https://scoolsn.github.io/S-COOL/shop.html">
-<meta property="og:image" content="https://scoolsn.github.io/S-COOL/images/og-image.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Boutique — S'Cool">
-<meta name="twitter:description" content="Tous nos Packs de rentrée et articles S'Cool. Commande directe sur WhatsApp.">
-<meta name="twitter:image" content="https://scoolsn.github.io/S-COOL/images/og-image.png">
-<link rel="icon" type="image/png" href="images/scoollogopng/favicon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Alice&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
+<a class="skip-link" href="#main">Aller au contenu</a>
+
 <!-- NAV -->
 <header>
-  <nav>
-    <a href="index.html#home" class="logo"><img class="logo-img" src="images/scoollogopng/5.png" alt="S'Cool" width="140" height="36"></a>
+  <nav aria-label="Navigation principale">
+    <a href="index.html#home" class="logo"><img class="logo-img" src="images/scoollogopng/mainlogo.webp" alt="S'Cool — accueil" width="140" height="38"></a>
     <div class="nav-right">
       <div class="nav-links" id="navLinks">
         <a href="index.html#home">Home</a>
-        <a href="shop.html" class="active">Shop</a>
+        <a href="shop.html" class="active" aria-current="page">Shop</a>
         <a href="index.html#about">About</a>
         <a href="index.html#contact">Contact</a>
       </div>
-      <button class="cart-btn" onclick="openCart()" aria-label="Voir le panier">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M4 4h2l1.6 9.6a2 2 0 0 0 2 1.6h7.4a2 2 0 0 0 2-1.6L20 8H7" stroke="#1B3624" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="20" r="1.3" stroke="#1B3624" stroke-width="1.4"/><circle cx="17" cy="20" r="1.3" stroke="#1B3624" stroke-width="1.4"/></svg>
+      <button type="button" class="cart-btn" onclick="openCart()" aria-label="Voir le panier">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4h2l1.6 9.6a2 2 0 0 0 2 1.6h7.4a2 2 0 0 0 2-1.6L20 8H7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="20" r="1.3" stroke="currentColor" stroke-width="1.4"/><circle cx="17" cy="20" r="1.3" stroke="currentColor" stroke-width="1.4"/></svg>
         <span>Panier</span>
         <span class="cart-badge">0</span>
       </button>
       <a class="nav-cta" href="index.html#contact">Nous écrire ↗</a>
-      <div class="burger" onclick="openMenu()">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 5H16M2 9H16M2 13H16" stroke="#1B3624" stroke-width="1.6" stroke-linecap="round"/></svg>
-      </div>
+      <button type="button" class="burger" onclick="openMenu()" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mmenu">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M2 5H16M2 9H16M2 13H16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
     </div>
   </nav>
 </header>
@@ -61,57 +70,83 @@
   <a href="index.html#contact" onclick="closeMenu()">Contact</a>
 </div>
 
+<main id="main">
 <!-- BOUTIQUE -->
 <section style="padding-top:120px; padding-bottom:60px;">
   <div class="wrap">
 
+    <!-- La page n'avait aucun <h1> : ni Google ni un lecteur d'écran
+         ne savaient de quoi elle parlait. -->
+    <div class="section-head reveal" style="margin-bottom:28px;">
+      <div class="eyebrow" style="justify-content:center;">Boutique</div>
+      <h1>Toutes les fournitures S'Cool</h1>
+      <p>Packs de rentrée composés à la main et articles à l'unité — des marques reconnues, livrées à Dakar sous 48h. Défile, compare, et commande sur WhatsApp.</p>
+    </div>
+
     <div class="shop-search reveal">
-      <svg class="search-lead-icon" width="17" height="17" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.6"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-      <input type="text" id="shopSearch" placeholder="Rechercher un produit...">
-      <button onclick="runSearch()" aria-label="Rechercher">
+      <svg class="search-lead-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.6"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <label class="sr-only" for="shopSearch">Rechercher un produit</label>
+      <input type="search" id="shopSearch" placeholder="Rechercher un produit..." autocomplete="off">
+      <button type="button" onclick="runSearch()" aria-label="Lancer la recherche">
         <span class="search-btn-text">Rechercher</span>
-        <svg class="search-btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <svg class="search-btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </button>
     </div>
 
-    <p style="text-align:center; color:var(--ink-soft); font-size:14px; margin-bottom:28px;">Défile, compare — et commande directement sur WhatsApp.</p>
+    <div class="shop-tabs reveal" id="shopTabs" role="tablist" aria-label="Type de produit">
+      <button type="button" class="shop-tab active" role="tab" aria-selected="true" data-cat="Articles">Articles</button>
+      <button type="button" class="shop-tab" role="tab" aria-selected="false" data-cat="Packs">Packs de rentrée</button>
+      <button type="button" class="shop-tab" role="tab" aria-selected="false" data-cat="Tous">Tout voir</button>
+    </div>
 
-    <div class="shop-tabs reveal" id="shopTabs">
-      <span class="shop-tab active" data-cat="Articles">Articles</span>
-      <span class="shop-tab" data-cat="Packs">Packs de rentrée</span>
-      <span class="shop-tab" data-cat="Tous">Tout voir</span>
+    <!-- Filtres par famille : les catégories existaient dans les données
+         mais n'étaient affichées que comme étiquette, jamais cliquables. -->
+    <div class="shop-filters reveal" id="shopFilters" role="group" aria-label="Filtrer par catégorie"></div>
+
+    <div class="shop-toolbar">
+      <p class="shop-count" id="shopCount" role="status" aria-live="polite"></p>
+      <div class="shop-sort">
+        <label for="shopSort">Trier</label>
+        <select id="shopSort">
+          <option value="default">Sélection S'Cool</option>
+          <option value="price-asc">Prix croissant</option>
+          <option value="price-desc">Prix décroissant</option>
+          <option value="name">Nom A → Z</option>
+        </select>
+      </div>
     </div>
 
     <!-- Section PACKS (visible en mode "Tout voir") -->
     <div id="packsSection" style="display:none;">
-      <h3 class="shop-section-title">Nos packs</h3>
+      <h2 class="shop-section-title">Nos packs</h2>
       <div class="packs-strip" id="packsStrip"></div>
     </div>
 
-    <h3 class="shop-section-title" id="articlesTitle" style="display:none;">Nos articles</h3>
+    <h2 class="shop-section-title" id="articlesTitle" style="display:none;">Nos articles</h2>
     <div class="article-grid" id="shopGrid"></div>
 
     <div class="shop-empty" id="shopEmpty" style="display:none;">
-      <h3 id="shopEmptyTitle">Ce produit n'est pas encore disponible sur le site</h3>
+      <h2 id="shopEmptyTitle">Ce produit n'est pas encore disponible sur le site</h2>
       <p>Mais il existe peut-être déjà chez nous — demande directement sur WhatsApp, on te répond sous ~2h.</p>
-      <a id="shopEmptyBtn" class="btn btn-whatsapp" target="_blank" href="https://wa.me/221762098743">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 12a8 8 0 1 1-3.6-6.7L20 4l-1 3.6A7.96 7.96 0 0 1 20 12Z" stroke="#fff" stroke-width="1.6"/></svg>
+      <a id="shopEmptyBtn" class="btn btn-whatsapp" target="_blank" rel="noopener" href="https://wa.me/221762098743" data-wa-icon="15">
         Demander sur WhatsApp
       </a>
     </div>
   </div>
 </section>
+</main>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-grid">
     <div>
-      <a href="index.html#home" class="logo logo-footer"><img class="logo-img-footer" src="images/scoollogopng/5.png" alt="S'Cool" width="155" height="40"></a>
+      <a href="index.html#home" class="logo logo-footer"><img class="logo-img-footer" src="images/scoollogopng/mainlogo.webp" alt="S'Cool" width="155" height="52" loading="lazy"></a>
       <p class="blurb">Fournitures scolaires premium et ressources éducatives pour aider chaque élève à réussir son année.</p>
-      <div class="newsletter-form">
-        <input type="email" placeholder="Votre email">
-        <button onclick="showToast('Merci ! Vous êtes inscrit(e) à la newsletter.')">OK</button>
-      </div>
+      <form class="newsletter-form" onsubmit="return submitNewsletter(event)">
+        <label class="sr-only" for="nl-email">Votre email</label>
+        <input id="nl-email" type="email" placeholder="Votre email" autocomplete="email" required>
+        <button type="submit">OK</button>
+      </form>
     </div>
     <div>
       <h6>Navigation</h6>
@@ -128,35 +163,35 @@
         <a href="index.html#about">About</a>
         <a href="index.html#contact">Contact</a>
         <a href="index.html#faq">FAQ</a>
-        <a href="#">Partenariats écoles</a>
+        <a href="https://wa.me/221762098743?text=Bonjour%20S%27Cool%2C%20je%20souhaite%20discuter%20d%27un%20partenariat%20%C3%A9cole." target="_blank" rel="noopener">Partenariats écoles</a>
       </div>
     </div>
     <div>
       <h6>Contact</h6>
       <div class="flinks">
-        <a href="https://wa.me/221762098743" target="_blank">+221 76 209 87 43</a>
+        <a href="https://wa.me/221762098743" target="_blank" rel="noopener">+221 76 209 87 43</a>
         <a href="mailto:Scool.senegal@gmail.com">Scool.senegal@gmail.com</a>
-        <a href="https://instagram.com/scool.sn" target="_blank">@scool.sn</a>
+        <a href="https://instagram.com/scool.sn" target="_blank" rel="noopener">@scool.sn</a>
       </div>
     </div>
   </div>
   <div class="foot-bottom">
     <p>© 2026 S'Cool. Tous droits réservés. · <a href="privacy.html" style="color:#A9C7B4; text-decoration:underline;">Politique de confidentialité</a></p>
     <div class="foot-social">
-      <a href="https://instagram.com/scool.sn" target="_blank" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="#fff" stroke-width="1.5"/></svg></a>
-      <a href="https://facebook.com/scool.sn" target="_blank" aria-label="Facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M15 4h-2a3 3 0 0 0-3 3v3H8v3h2v7h3v-7h2.2l.8-3H13V7.5c0-.4.3-.5.6-.5H15V4Z" stroke="#fff" stroke-width="1.5"/></svg></a>
+      <a href="https://instagram.com/scool.sn" target="_blank" rel="noopener" aria-label="S'Cool sur Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/></svg></a>
+      <a href="https://facebook.com/scool.sn" target="_blank" rel="noopener" aria-label="S'Cool sur Facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 4h-2a3 3 0 0 0-3 3v3H8v3h2v7h3v-7h2.2l.8-3H13V7.5c0-.4.3-.5.6-.5H15V4Z" stroke="currentColor" stroke-width="1.5"/></svg></a>
     </div>
   </div>
 </footer>
 
-<div class="toast" id="toast"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <!-- CART DRAWER -->
 <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
-<aside class="cart-drawer" id="cartDrawer">
+<aside class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle" aria-hidden="true">
   <div class="cart-head">
-    <h3>Ton panier</h3>
-    <button class="cart-close" onclick="closeCart()" aria-label="Fermer">✕</button>
+    <h2 id="cartTitle">Ton panier</h2>
+    <button type="button" class="cart-close" onclick="closeCart()" aria-label="Fermer le panier">✕</button>
   </div>
   <div class="cart-items" id="cartItems"></div>
   <div class="cart-foot">
@@ -169,14 +204,16 @@
       </div>
       <span class="cr-delivery">Livraison Dakar sous 48h</span>
     </div>
+    <div class="cart-sum">
+      <div class="cart-sum-row"><span>Sous-total</span><span id="cartSubtotal">0 FCFA</span></div>
+      <div class="cart-sum-row"><span>Livraison Dakar</span><span id="cartDelivery">—</span></div>
+      <div class="cart-delivery-hint" id="cartDeliveryHint" style="display:none;"></div>
+    </div>
     <div class="cart-total-row">
       <span>Total</span>
       <span class="price" id="cartTotal">0 FCFA</span>
     </div>
-    <button class="btn btn-whatsapp btn-block" onclick="checkoutCartWhatsapp()">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 12a8 8 0 1 1-3.6-6.7L20 4l-1 3.6A7.96 7.96 0 0 1 20 12Z" stroke="#fff" stroke-width="1.6"/></svg>
-      Valider sur WhatsApp
-    </button>
+    <button type="button" class="btn btn-whatsapp btn-block" onclick="checkoutCartWhatsapp()" data-wa-icon="15">Valider sur WhatsApp</button>
   </div>
 </aside>
 
