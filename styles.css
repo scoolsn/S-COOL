@@ -1,7 +1,7 @@
 :root{
-    --blue:#1B3624;
-    --blue-light:#2E5940;
-    --blue-pale:#E4F0F5;
+    --green:#1B3624;
+    --green-light:#2E5940;
+    --mist:#E4F0F5;
     --sky:#B1D4E0;
     --yellow:#F6B90A;
     --yellow-soft:#FDE8A6;
@@ -31,7 +31,7 @@
   h1,h2,h3,h4,h5,h6{
     font-family:'League Spartan', sans-serif;
     letter-spacing:-0.02em;
-    color:var(--blue);
+    color:var(--green);
     font-weight:700;
   }
   .mono{font-family:'IBM Plex Mono',monospace; letter-spacing:0.02em;}
@@ -45,7 +45,7 @@
     font-size:12.5px;
     text-transform:uppercase;
     letter-spacing:0.14em;
-    color:var(--blue-light);
+    color:var(--green-light);
     display:inline-flex;
     align-items:center;
     gap:8px;
@@ -90,10 +90,10 @@
     transition:box-shadow .3s ease;
   }
   .logo{display:inline-flex; align-items:center; text-decoration:none;}
-  .logo-img{height: 180px; width:auto; max-width:140px; object-fit:contain; display:block; transition:transform .25s ease;}
+  .logo-img{height:38px; width:auto; max-width:140px; object-fit:contain; display:block; transition:transform .25s ease;}
   .logo:hover .logo-img{transform:scale(1.05);}
   .logo-footer{display:inline-block; margin-bottom:14px;}
-  .logo-img-footer{height:250px; width:auto; max-width:155px; object-fit:contain; display:block; transition:transform .25s ease;}
+  .logo-img-footer{height:52px; width:auto; max-width:155px; object-fit:contain; display:block; transition:transform .25s ease;}
   .logo-footer:hover .logo-img-footer{transform:scale(1.05);}
 
   .nav-links{display:flex; align-items:center; gap:2px;}
@@ -103,23 +103,23 @@
     font-size:15px; font-weight:600; color:var(--ink-soft);
     padding:9px 16px; border-radius:100px; transition:all .25s ease;
   }
-  .nav-links a:hover{color:var(--blue); background:var(--blue-pale);}
-  .nav-links a.active{color:var(--blue); background:var(--blue-pale); font-weight:700;}
+  .nav-links a:hover{color:var(--green); background:var(--mist);}
+  .nav-links a.active{color:var(--green); background:var(--mist); font-weight:700;}
   .nav-cta{
-    background:var(--blue); color:var(--white); font-family:'League Spartan', sans-serif; font-size:14.5px; font-weight:700;
+    background:var(--green); color:var(--white); font-family:'League Spartan', sans-serif; font-size:14.5px; font-weight:700;
     padding:11px 20px; border-radius:100px; display:flex; align-items:center; gap:6px;
     transition:transform .25s ease, background .25s ease;
   }
-  .nav-cta:hover{background:var(--blue-light); transform:translateY(-1px);}
-  .burger{display:none; width:38px; height:38px; border-radius:100px; background:var(--blue-pale); align-items:center; justify-content:center; cursor:pointer;}
+  .nav-cta:hover{background:var(--green-light); transform:translateY(-1px);}
+  .burger{display:none; width:38px; height:38px; border-radius:100px; background:var(--mist); align-items:center; justify-content:center; cursor:pointer;}
   .cart-btn{
     position:relative; display:flex; align-items:center; gap:7px; border:none; cursor:pointer; flex-shrink:0;
-    background:var(--yellow); color:var(--blue); font-family:'League Spartan',sans-serif; font-weight:700; font-size:15px;
+    background:var(--yellow); color:var(--green); font-family:'League Spartan',sans-serif; font-weight:700; font-size:15px;
     padding:10px 18px; border-radius:100px; transition:transform .2s ease, box-shadow .2s ease;
   }
   .cart-btn:hover{transform:translateY(-1px); box-shadow:0 8px 18px -8px rgba(246,185,10,0.6);}
   .cart-badge{
-    position:absolute; top:-6px; right:-6px; min-width:18px; height:18px; border-radius:100px; background:var(--blue);
+    position:absolute; top:-6px; right:-6px; min-width:18px; height:18px; border-radius:100px; background:var(--green);
     color:#fff; font-family:'IBM Plex Mono',monospace; font-size:10.5px; font-weight:600;
     display:none; align-items:center; justify-content:center; padding:0 4px; border:2px solid var(--cream);
   }
@@ -136,8 +136,8 @@
   }
   .cart-drawer.open{transform:translateX(0);}
   .cart-head{display:flex; justify-content:space-between; align-items:center; padding:22px 22px 16px; border-bottom:1px solid var(--line);}
-  .cart-head h3{font-family:'League Spartan', sans-serif; font-size:20px; font-weight:700;}
-  .cart-close{width:32px; height:32px; border-radius:100px; background:var(--blue-pale); border:none; cursor:pointer; font-size:13px; color:var(--blue);}
+  .cart-head h2, .cart-head h3{font-family:'League Spartan', sans-serif; font-size:20px; font-weight:700;}
+  .cart-close{width:32px; height:32px; border-radius:100px; background:var(--mist); border:none; cursor:pointer; font-size:13px; color:var(--green);}
   .cart-items{flex:1; overflow-y:auto; padding:14px 22px;}
   .cart-item{display:flex; gap:12px; align-items:center; padding:14px 0; border-bottom:1px dashed var(--line);}
   .cart-item .ci-icon{width:44px; height:44px; background:var(--beige); border-radius:12px; display:flex; align-items:center; justify-content:center; flex-shrink:0;}
@@ -146,7 +146,7 @@
   .ci-info h6{font-family:'League Spartan', sans-serif; font-size:15px; font-weight:700; color:var(--ink); margin-bottom:3px; line-height:1.2;}
   .ci-info .mono{font-size:12px; color:var(--ink-soft);}
   .ci-qty{display:flex; align-items:center; gap:10px; margin-top:6px;}
-  .ci-qty button{width:22px; height:22px; border-radius:7px; border:1px solid var(--line); background:var(--white); cursor:pointer; font-size:13px; color:var(--blue); line-height:1;}
+  .ci-qty button{width:22px; height:22px; border-radius:7px; border:1px solid var(--line); background:var(--white); cursor:pointer; font-size:13px; color:var(--green); line-height:1;}
   .ci-qty span{font-family:'IBM Plex Mono',monospace; font-size:13px; min-width:14px; text-align:center;}
   .ci-remove{background:none; border:none; color:var(--ink-soft); cursor:pointer; font-size:13px; padding:6px; flex-shrink:0;}
   .ci-remove:hover{color:#C0392B;}
@@ -161,7 +161,7 @@
   .coming-soon-icon{width:56px; height:56px; border-radius:16px; background:var(--yellow-soft); display:flex; align-items:center; justify-content:center; margin:0 auto 18px;}
   .coming-soon h3{font-family:'League Spartan', sans-serif; font-size:21px; margin-bottom:10px;}
   .coming-soon p{font-size:15px; color:var(--ink-soft); line-height:1.6;}
-  .coming-soon p a{color:var(--blue); font-weight:600;}
+  .coming-soon p a{color:var(--green); font-weight:600;}
 
   .shop-search{
     display:flex; align-items:center; gap:10px; background:var(--white); border:1.5px solid var(--line);
@@ -170,7 +170,7 @@
   .shop-search svg{flex-shrink:0; color:var(--ink-soft);}
   .shop-search input{flex:1; border:none; outline:none; background:none; font-family:'Alice', serif; font-size:15.5px; padding:10px 0;}
   .shop-search button{
-    background:var(--blue); color:#fff; border:none; border-radius:100px; padding:10px 22px;
+    background:var(--green); color:#fff; border:none; border-radius:100px; padding:10px 22px;
     font-family:'League Spartan', sans-serif; font-size:14.5px; font-weight:700; cursor:pointer; flex-shrink:0;
   }
   .shop-tabs{display:flex; justify-content:center; gap:8px; margin-bottom:40px; flex-wrap:wrap;}
@@ -179,8 +179,8 @@
     border:1.5px solid var(--line); background:var(--white); cursor:pointer; color:var(--ink-soft);
     transition:all .2s ease; user-select:none;
   }
-  .shop-tab:hover{border-color:var(--blue-light);}
-  .shop-tab.active{background:var(--blue); color:#fff; border-color:var(--blue);}
+  .shop-tab:hover{border-color:var(--green-light);}
+  .shop-tab.active{background:var(--green); color:#fff; border-color:var(--green);}
   .shop-empty{
     max-width:440px; margin:20px auto 0; text-align:center; background:var(--white);
     border-radius:var(--radius-lg); padding:44px 30px; border:1px dashed var(--line);
@@ -205,21 +205,21 @@
   .mobile-menu.open{display:flex;}
   .mobile-menu a{
     font-family:'League Spartan', sans-serif; padding:14px 16px; border-radius:14px;
-    font-weight:600; color:var(--blue); font-size:16px;
-    background:var(--blue-pale); display:block;
+    font-weight:600; color:var(--green); font-size:16px;
+    background:var(--mist); display:block;
     transition:background .2s ease;
   }
   .mobile-menu a:hover{background:var(--beige);}
 
-  /* Scroll lock + blur quand burger ouvert */
-  body.menu-open{overflow:hidden;}
+  /* Scroll lock partage (menu, panier, fiche produit) + voile derriere le burger */
+  body.scroll-locked{overflow:hidden;}
   body.menu-open::after{
     content:''; position:fixed; inset:0; z-index:98;
     background:rgba(27,54,36,0.25); backdrop-filter:blur(3px);
     -webkit-backdrop-filter:blur(3px);
   }
 
-  .hero{padding: top 90px; padding-bottom:60px; position:relative; overflow:hidden;}
+  .hero{padding:112px 24px 60px; position:relative; overflow:hidden;}
   .hero::before{
     content:''; position:absolute; top:-120px; right:-160px; width:560px; height:560px;
     background:radial-gradient(circle, var(--yellow-soft) 0%, transparent 70%);
@@ -227,7 +227,7 @@
   }
   .hero::after{
     content:''; position:absolute; top:20%; left:-200px; width:520px; height:520px;
-    background:radial-gradient(circle, var(--blue-pale) 0%, transparent 70%);
+    background:radial-gradient(circle, var(--mist) 0%, transparent 70%);
     z-index:0; pointer-events:none;
   }
   .hero-inner{position:relative; z-index:1; text-align:center; max-width:920px; margin:0 auto;}
@@ -247,7 +247,7 @@
     line-height:1.05;
     margin-bottom:20px;
     letter-spacing:-0.03em;
-    color:var(--blue);
+    color:var(--green);
   }
   .hero p.sub{
     font-family:'Alice', Georgia, serif;
@@ -262,14 +262,19 @@
     text-decoration:none;
     transition:transform .25s cubic-bezier(.4,0,.2,1), box-shadow .25s ease, background .25s ease;
   }
-  .btn-primary{background:var(--blue); color:#fff; box-shadow:0 10px 26px -8px rgba(27,54,36,0.45);}
-  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 16px 32px -8px rgba(27,54,36,0.5); background:var(--blue-light);}
-  .btn-secondary{background:var(--white); color:var(--blue); border:1.5px solid var(--line); box-shadow:0 4px 16px -4px rgba(27,54,36,0.06);}
-  .btn-secondary:hover{border-color:var(--blue); transform:translateY(-2px); box-shadow:0 10px 24px -8px rgba(27,54,36,0.12);}
-  .btn-yellow{background:var(--yellow); color:var(--blue); font-weight:700;}
+  .btn-primary{background:var(--green); color:#fff; box-shadow:0 10px 26px -8px rgba(27,54,36,0.45);}
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 16px 32px -8px rgba(27,54,36,0.5); background:var(--green-light);}
+  .btn-secondary{background:var(--white); color:var(--green); border:1.5px solid var(--line); box-shadow:0 4px 16px -4px rgba(27,54,36,0.06);}
+  .btn-secondary:hover{border-color:var(--green); transform:translateY(-2px); box-shadow:0 10px 24px -8px rgba(27,54,36,0.12);}
+  .btn-yellow{background:var(--yellow); color:var(--green); font-weight:700;}
   .btn-yellow:hover{transform:translateY(-2px); box-shadow:0 12px 26px -10px rgba(246,185,10,0.6);}
   .btn-whatsapp{background:#1F3A22; color:#fff; box-shadow:0 10px 24px -8px rgba(31,58,34,0.45);}
   .btn-whatsapp:hover{background:#16481D; transform:translateY(-2px); box-shadow:0 16px 30px -8px rgba(31,58,34,0.55);}
+  .btn-outline{
+    background:var(--white); color:var(--green); border:1.5px solid var(--green);
+    box-shadow:none;
+  }
+  .btn-outline:hover{background:var(--green); color:#fff; transform:translateY(-1px);}
   .btn-sm{padding:10px 18px; font-size:14px; border-radius:100px;}
   .btn-block{width:100%; justify-content:center;}
 
@@ -308,7 +313,7 @@
   }
   .fp-icon{width:34px; height:34px; border-radius:100px; background:var(--yellow-soft); display:flex; align-items:center; justify-content:center; font-size:17px; flex-shrink:0;}
   .fp-text{display:flex; flex-direction:column; line-height:1.2;}
-  .fp-title{font-family:'League Spartan', sans-serif; font-size:15px; font-weight:700; color:var(--blue);}
+  .fp-title{font-family:'League Spartan', sans-serif; font-size:15px; font-weight:700; color:var(--green);}
   .fp-sub{font-family:'Alice', serif; font-size:12px; color:var(--ink-soft);}
 
   .fp-left{top:26%; left:2%; animation-delay:0s;}
@@ -328,7 +333,7 @@
     box-shadow:var(--shadow-soft);
   }
   .hero-strip div{text-align:center;}
-  .hero-strip .num{font-family:'League Spartan',sans-serif; font-weight:700; font-size:28px; color:var(--blue); line-height:1.1;}
+  .hero-strip .num{font-family:'League Spartan',sans-serif; font-weight:700; font-size:28px; color:var(--green); line-height:1.1;}
   .hero-strip .lbl{font-family:'Alice', serif; font-size:13px; color:var(--ink-soft); margin-top:4px;}
 
   @media (max-width:680px){
@@ -336,99 +341,166 @@
     .hero-bts-img{width:220px;}
   }
 
-  .pillars{display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:20px;}
-  @media (max-width:820px){.pillars{grid-template-columns:1fr;}}
-  .pillar-card{
-    border-radius:var(--radius-lg); padding:40px 34px; position:relative; overflow:hidden;
-    transition:transform .35s cubic-bezier(.4,0,.2,1), box-shadow .35s ease;
-  }
-  .pillar-card:hover{transform:translateY(-6px); box-shadow:var(--shadow-lift);}
-  .pillar-1{background:var(--blue); color:#fff;}
-  .pillar-2{background:var(--beige); color:var(--blue);}
-  .pillar-icon{width:56px; height:56px; border-radius:16px; display:flex; align-items:center; justify-content:center; margin-bottom:26px;}
-  .pillar-1 .pillar-icon{background:rgba(246,185,10,0.18);}
-  .pillar-2 .pillar-icon{background:rgba(27,54,36,0.08);}
-  .pillar-card h3{font-family:'League Spartan', sans-serif; font-size:28px; margin-bottom:14px;}
-  .pillar-1 h3{color:#fff;}
-  .pillar-card p{font-size:16px; line-height:1.65; margin-bottom:28px; opacity:0.95;}
-  .pillar-1 p{color:#DCE9DE;}
-  .pillar-2 p{color:var(--ink-soft);}
-  .pillar-card .btn{margin-top:4px;}
-/* DEVIS SUR LISTE */
-.devis-section{
-  background:#b1d4e0;
-  border-radius:0;
-  margin-bottom: 20px;
-  width:100%;
-  color:var(--blue);
-  position:relative;
-  overflow:hidden;
-  padding:80px 24px;
+/* ==========================================================================
+   DEVIS SUR LISTE — la promesse commerciale la plus forte du site.
+   Traitée comme le bloc le plus contrasté de la page : carte vert profond,
+   dans la charte (même rayon et mêmes marges que les autres sections),
+   au lieu de l'ancien aplat bleu pleine largeur hors palette.
+   ========================================================================== */
+.devis-section{padding:40px 16px;}
+@media (max-width:640px){ .devis-section{padding:28px 12px;} }
+
+.devis-card{
+  background:var(--green);
+  color:#fff;
+  border-radius:40px;
+  padding:clamp(32px,5vw,64px);
+  display:grid; grid-template-columns:1.05fr 0.95fr; gap:clamp(28px,4vw,56px);
+  align-items:center;
+  position:relative; overflow:hidden;
+  box-shadow:var(--shadow-lift);
 }
-.devis-section::before{
-  content:'';
-  position:absolute; top:-140px; right:-120px; width:420px; height:420px;
-  background:radial-gradient(circle, rgba(22,48,91,0.08) 0%, transparent 70%);
+.devis-card::before{
+  content:''; position:absolute; top:-180px; right:-140px; width:460px; height:460px;
+  background:radial-gradient(circle, rgba(246,185,10,0.16) 0%, transparent 70%);
+  pointer-events:none;
 }
-.devis-wrap{position:relative; z-index:1;}
-.devis-head{max-width:640px; margin:0 auto 56px; text-align:center;}
+@media (max-width:860px){
+  .devis-card{grid-template-columns:1fr; gap:32px; border-radius:28px;}
+}
+.devis-copy{position:relative; z-index:1;}
+.devis-copy .eyebrow{color:var(--yellow-soft);}
+.devis-copy .eyebrow::before{background:var(--yellow);}
 .devis-title{
   font-family:'League Spartan', sans-serif;
-  font-weight:700;
-  font-size:clamp(30px, 5vw, 48px);
-  line-height:1.08;
-  letter-spacing:-0.02em;
-  color:var(--blue);
-  margin-bottom:20px;
+  font-weight:800;
+  font-size:clamp(28px, 4.2vw, 46px);
+  line-height:1.06;
+  letter-spacing:-0.025em;
+  color:#fff;
+  margin-bottom:16px;
+  text-wrap:balance;   /* evite qu'un mot seul tombe sur sa propre ligne */
 }
 .devis-sub{
-  font-size:16px;
-  color:var(--ink-soft);
-  line-height:1.6;
-  max-width:480px;
-  margin:0 auto 32px;
+  font-size:16.5px;
+  color:#DCE9DE;          /* 9.5:1 sur le vert : lisible en plein soleil */
+  line-height:1.65;
+  max-width:46ch;
+  margin-bottom:24px;
 }
-.devis-cta{
-  display:inline-flex; align-items:center; gap:9px;
-  background:var(--yellow); color:var(--blue);
-  font-weight:700; font-size:16px;
-  padding:17px 32px; border-radius:100px;
-  box-shadow:0 14px 30px -10px rgba(22,48,91,0.25);
-  transition:transform .25s ease, box-shadow .25s ease;
+/* Les 3 réassurances qui manquaient : gratuité, délai, formats acceptés. */
+.devis-proof{list-style:none; display:flex; flex-wrap:wrap; gap:8px; margin-bottom:28px;}
+.devis-proof li{
+  font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.03em;
+  background:rgba(255,255,255,0.10); border:1px solid rgba(255,255,255,0.18);
+  color:#EAF3EC; padding:7px 13px 7px 28px; border-radius:100px; position:relative;
 }
-.devis-cta:hover{transform:translateY(-2px); box-shadow:0 18px 36px -10px rgba(22,48,91,0.32);}
+.devis-proof li::before{
+  content:''; position:absolute; left:12px; top:50%;
+  width:6px; height:10px; margin-top:-6px;
+  border:solid var(--yellow); border-width:0 2px 2px 0; transform:rotate(45deg);
+}
+.devis-cta{font-size:16.5px; padding:16px 30px;}
+.devis-note{font-size:13px; color:#A9C7B4; margin-top:14px;}
 
+/* ---- Visuel : la liste manuscrite devient un devis ----
+   Schéma dessiné en CSS, sans image à charger. Les montants sont
+   volontairement figurés par des barres : aucun faux prix affiché. */
+.devis-visual{position:relative; z-index:1; display:flex; justify-content:center;}
+.devis-papers{position:relative; width:min(340px,100%); aspect-ratio:1/0.92;}
+.paper{
+  position:absolute; background:#fff; border-radius:16px; padding:18px 18px 16px;
+  box-shadow:0 24px 48px -18px rgba(0,0,0,0.45);
+}
+.paper-label{
+  font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.1em;
+  text-transform:uppercase; color:var(--ink-soft); margin-bottom:12px; display:block;
+}
+.paper-list{ top:0; left:0; width:60%; transform:rotate(-5deg); }
+.paper-list .scribble{display:block; height:6px; border-radius:6px; background:#D8DEE4; margin-bottom:11px;}
+.paper-list .scribble:nth-child(2){width:88%;}
+.paper-list .scribble:nth-child(3){width:70%;}
+.paper-list .scribble:nth-child(4){width:92%;}
+.paper-list .scribble:nth-child(5){width:64%;}
+.paper-list .scribble:nth-child(6){width:80%;}
+.paper-quote{ bottom:0; right:0; width:66%; transform:rotate(3deg); border-top:4px solid var(--yellow); }
+.paper-quote .qline{display:flex; align-items:center; gap:8px; margin-bottom:10px;}
+.paper-quote .qtick{
+  width:14px; height:14px; border-radius:100px; background:var(--green); flex-shrink:0;
+  position:relative;
+}
+.paper-quote .qtick::after{
+  content:''; position:absolute; left:5px; top:3px; width:3px; height:6px;
+  border:solid #fff; border-width:0 1.5px 1.5px 0; transform:rotate(45deg);
+}
+.paper-quote .qbar{height:6px; border-radius:6px; background:#E4EAF0; flex:1;}
+.paper-quote .qamount{height:6px; width:26px; border-radius:6px; background:var(--green-light); flex-shrink:0;}
+.paper-quote .qtotal{
+  display:flex; align-items:center; justify-content:space-between; gap:8px;
+  border-top:1px dashed var(--line); padding-top:10px; margin-top:2px;
+}
+.paper-quote .qtotal span{font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--ink-soft);}
+.paper-quote .qtotal .qamount{height:8px; width:46px; background:var(--green);}
+.devis-arrow{
+  position:absolute; left:50%; top:46%; transform:translate(-58%,-50%) rotate(12deg);
+  color:var(--yellow); z-index:2;
+}
+@media (max-width:860px){
+  .devis-papers{width:min(300px,86%); margin:0 auto;}
+  /* la fleche passe entre les deux feuilles au lieu de chevaucher le devis */
+  .devis-arrow{width:34px; height:34px; left:auto; right:8%; top:40%; transform:rotate(62deg);}
+}
+
+/* ---- Frise des 4 étapes : ligne de liaison + icônes ---- */
 .devis-steps{
-  display:grid; grid-template-columns:repeat(4,1fr); gap:28px;
-  max-width:960px; margin:0 auto;
+  list-style:none;
+  display:grid; grid-template-columns:repeat(4,1fr); gap:20px;
+  max-width:1000px; margin:44px auto 0; padding:0 8px;
+  position:relative;
 }
-@media (max-width:820px){ .devis-steps{grid-template-columns:1fr 1fr;} }
-@media (max-width:520px){ .devis-steps{grid-template-columns:1fr; gap:32px;} }
-.devis-step{text-align:left;}
+.devis-step{position:relative; padding-top:6px;}
+/* Le trait pointillé qui relie les étapes entre elles. */
+.devis-step:not(:last-child)::after{
+  content:''; position:absolute; top:22px; left:calc(44px); right:-20px; height:2px;
+  background:repeating-linear-gradient(90deg, var(--line) 0 6px, transparent 6px 12px);
+}
 .devis-num{
-  display:block;
-  font-family:'Space Grotesk', sans-serif;
-  font-weight:700;
-  font-size:32px;
-  color:var(--blue);
-  margin-bottom:10px;
+  display:inline-flex; align-items:center; justify-content:center;
+  width:44px; height:44px; border-radius:100px;
+  background:var(--yellow); color:var(--green);
+  font-family:'League Spartan', sans-serif; font-weight:800; font-size:19px;
+  margin-bottom:14px; position:relative; z-index:1;
+  box-shadow:0 8px 18px -8px rgba(246,185,10,0.7);
 }
-.devis-step h4{font-size:15.5px; color:var(--blue); margin-bottom:6px; font-family:'Inter',sans-serif; font-weight:600;}
-.devis-step p{font-size:13px; color:var(--ink-soft); line-height:1.55;}
+.devis-step h3{font-size:16px; color:var(--green); margin-bottom:5px; font-family:'League Spartan',sans-serif; font-weight:700;}
+.devis-step p{font-size:14px; color:var(--ink-soft); line-height:1.55;}
 
-@media (max-width:640px){
-  .devis-section{padding:64px 20px;}
+@media (max-width:820px){
+  .devis-steps{grid-template-columns:1fr 1fr; gap:26px 20px;}
+  .devis-step:nth-child(2n)::after{display:none;}
+}
+@media (max-width:520px){
+  .devis-steps{grid-template-columns:1fr; gap:0; margin-top:32px;}
+  .devis-step{display:grid; grid-template-columns:44px 1fr; gap:0 16px; padding-bottom:22px;}
+  .devis-num{margin-bottom:0; grid-row:span 2;}
+  /* sur mobile le trait devient vertical, le long de la colonne des numéros */
+  .devis-step:not(:last-child)::after{
+    top:52px; bottom:4px; left:21px; right:auto; width:2px; height:auto;
+    background:repeating-linear-gradient(180deg, var(--line) 0 6px, transparent 6px 12px);
+  }
+  .devis-step h3{align-self:center;}
+  .devis-step p{grid-column:2;}
 }
 
-  .brands-marquee{padding:36px 0; overflow:hidden;}
+.brands-marquee{padding:36px 0; overflow:hidden;}
   .brands-title{
     text-align:center; font-family:'IBM Plex Mono',monospace; font-size:12.5px; text-transform:uppercase;
-    letter-spacing:0.14em; color:var(--blue-light); margin-bottom:28px;
+    letter-spacing:0.14em; color:var(--green-light); margin-bottom:28px;
   }
   .marquee{ display:flex; width:100%; overflow:hidden; }
   .marquee-content{ display:flex; animation:scroll-marquee 25s linear infinite; }
   .marquee-item{ flex:0 0 auto; width:130px; margin:0 24px; display:flex; align-items:center; justify-content:center; }
-  .marquee-item img{ max-width:100%; height:auto; opacity:0.55; transition:all .3s ease; }
+  .marquee-item img{ max-width:100%; height:auto; opacity:0.75; filter:grayscale(100%); transition:opacity .3s ease, filter .3s ease; }
   .marquee-item img:hover{ filter:grayscale(0%); opacity:1; }
   @keyframes scroll-marquee{ 0%{ transform:translateX(0); } 100%{ transform:translateX(-50%); } }
   @media (max-width:640px){ .marquee-item{ width:90px; margin:0 16px; } }
@@ -450,14 +522,14 @@
   .pack-card:hover{transform:translateY(-5px); box-shadow:var(--shadow-soft);}
   .pack-icon{
     width:48px; height:48px; border-radius:13px; background:var(--accent, var(--yellow)); opacity:0.9;
-    display:flex; align-items:center; justify-content:center; color:var(--blue); margin-bottom:16px;
+    display:flex; align-items:center; justify-content:center; color:var(--green); margin-bottom:16px;
   }
   .pack-card h3{font-family:'League Spartan', sans-serif; font-size:24px; font-weight:700; margin-bottom:6px;}
   .pack-desc{font-size:14px; color:var(--ink-soft); line-height:1.55; margin-bottom:14px; min-height:42px;}
-  .pack-price{font-family:'League Spartan',sans-serif; font-weight:700; font-size:24px; color:var(--blue); margin-bottom:16px;}
+  .pack-price{font-family:'League Spartan',sans-serif; font-weight:700; font-size:24px; color:var(--green); margin-bottom:16px;}
   .pack-toggle{
     display:flex; align-items:center; justify-content:space-between; width:100%; background:none; border:none;
-    border-top:1px dashed var(--line); padding:12px 0; cursor:pointer; font-size:12.5px; color:var(--blue-light);
+    border-top:1px dashed var(--line); padding:12px 0; cursor:pointer; font-size:12.5px; color:var(--green-light);
     font-family:'IBM Plex Mono',monospace;
   }
   .pack-toggle svg{transition:transform .3s ease;}
@@ -465,21 +537,21 @@
     list-style:none; max-height:0; overflow:hidden; transition:max-height .4s ease;
     font-size:13.5px; color:var(--ink-soft); line-height:1.8;
   }
-  .pack-items.open{max-height:600px; margin-bottom:8px;}
+  .pack-items.open{margin-bottom:8px;}
   .pack-items li{padding-left:14px; position:relative;}
   .pack-items li::before{content:'—'; position:absolute; left:0; color:var(--accent, var(--yellow));}
   .pack-trousse{display:flex; align-items:flex-start; gap:8px; font-size:13px; color:var(--ink-soft); margin:12px 0 16px; cursor:pointer; line-height:1.4;}
-  .pack-trousse input{accent-color:var(--blue); margin-top:2px;}
+  .pack-trousse input{accent-color:var(--green); margin-top:2px;}
   .pack-brands{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:14px;}
   .pack-brands span{
     font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.06em;
-    background:var(--blue-pale); color:var(--blue-light);
+    background:var(--mist); color:var(--green-light);
     padding:4px 9px; border-radius:100px;
   }
   .product-badge{
     position:absolute; top:14px; right:14px;
     font-family:'League Spartan',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.04em;
-    background:var(--yellow); color:var(--blue); padding:4px 11px; border-radius:100px;
+    background:var(--yellow); color:var(--green); padding:4px 11px; border-radius:100px;
   }
 
   .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center;}
@@ -491,56 +563,59 @@
   }
 
 
-  .about-badge-img{
-    max-width:260px; width:85%; height:auto; display:block;
-    filter:drop-shadow(0 16px 36px rgba(0,0,0,0.4));
-    transition:transform .4s cubic-bezier(.4,0,.2,1);
-  
-  }
-  .about-badge-img:hover{ transform:scale(1.06) rotate(2deg); }
   .mission-quote{ background:var(--beige); border-radius:var(--radius-md); padding:28px 30px; margin-top:24px; border-left:4px solid var(--yellow); }
-  .mission-quote p{font-family:'Alice', serif; font-size:18px; font-style:italic; color:var(--blue); line-height:1.6;}
+  .mission-quote p{font-family:'Alice', serif; font-size:18px; font-style:italic; color:var(--green); line-height:1.6;}
 
   .stat-row{display:flex; gap:32px; margin-top:32px; flex-wrap:wrap;}
-  .stat-row .num{font-family:'League Spartan',sans-serif; font-weight:700; font-size:32px; color:var(--blue);}
+  .stat-row .num{font-family:'League Spartan',sans-serif; font-weight:700; font-size:32px; color:var(--green);}
   .stat-row .lbl{font-size:13px; color:var(--ink-soft);}
 
-  .testi-track{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
-  @media (max-width:900px){.testi-track{grid-template-columns:1fr; max-width:480px; margin:0 auto;}}
+  /* --testi-cols est pose par script.js selon le nombre reel de temoignages :
+     avec 2 avis dans une grille de 3, la 3e colonne restait vide. */
+  .testi-track{
+    display:grid; grid-template-columns:repeat(var(--testi-cols,3),1fr); gap:20px;
+    max-width:calc(var(--testi-cols,3) * 400px); margin:0 auto;
+  }
+  @media (max-width:900px){.testi-track{grid-template-columns:1fr; max-width:480px;}}
   .testi-card{
     background:var(--white); border:1px solid var(--line); border-radius:var(--radius-md); padding:28px;
     display:flex; flex-direction:column; gap:18px;
   }
   .stars{color:var(--yellow); font-size:14px; letter-spacing:2px;}
-  .testi-card p.quote{font-size:15px; line-height:1.7; color:var(--ink);}
+  .testi-card .quote{font-size:15px; line-height:1.7; color:var(--ink); font-style:normal;}
   .testi-person{display:flex; align-items:center; gap:12px; margin-top:auto;}
   .avatar{
     width:42px; height:42px; border-radius:100px; display:flex; align-items:center; justify-content:center;
     font-family:'League Spartan',sans-serif; font-weight:700; color:#fff; font-size:16px; flex-shrink:0;
   }
-  .testi-person .name{font-family:'League Spartan', sans-serif; font-size:15px; font-weight:700; color:var(--ink);}
-  .testi-person .role{font-size:12.5px; color:var(--ink-soft);}
+  .testi-person .name{font-family:'League Spartan', sans-serif; font-size:15px; font-weight:700; color:var(--ink); display:block;}
+  .testi-person .role{font-size:12.5px; color:var(--ink-soft); display:block;}
 
   .faq-list{max-width:760px; margin:0 auto;}
   .faq-item{border-bottom:1px solid var(--line); padding:22px 4px;}
-  .faq-q{display:flex; justify-content:space-between; align-items:center; cursor:pointer; gap:16px;}
-  .faq-q h5{font-size:17px; font-weight:700; color:var(--ink); font-family:'League Spartan',sans-serif;}
-  .faq-icon{width:26px; height:26px; border-radius:100px; background:var(--blue-pale); flex-shrink:0; display:flex; align-items:center; justify-content:center; transition:transform .3s ease;}
+  .faq-q{margin:0;}
+  .faq-btn{
+    display:flex; justify-content:space-between; align-items:center; gap:16px;
+    width:100%; background:none; border:none; padding:0; cursor:pointer; text-align:left;
+    font-size:17px; font-weight:700; color:var(--ink); font-family:'League Spartan',sans-serif;
+  }
+  .faq-icon{width:26px; height:26px; border-radius:100px; background:var(--mist); flex-shrink:0; display:flex; align-items:center; justify-content:center; transition:transform .3s ease;}
   .faq-item.open .faq-icon{transform:rotate(45deg); background:var(--yellow);}
   .faq-a{max-height:0; overflow:hidden; transition:max-height .35s ease;}
-  .faq-item.open .faq-a{max-height:200px;}
   .faq-a p{font-size:15px; color:var(--ink-soft); line-height:1.7; padding-top:14px; max-width:620px;}
 
   .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:48px;}
   @media (max-width:860px){.contact-grid{grid-template-columns:1fr;}}
   .contact-form{display:flex; flex-direction:column; gap:14px;}
-  .field label{font-size:12.5px; font-weight:600; color:var(--blue); margin-bottom:6px; display:block; font-family:'IBM Plex Mono',monospace; text-transform:uppercase; letter-spacing:0.04em;}
+  .field label{font-size:12.5px; font-weight:600; color:var(--green); margin-bottom:6px; display:block; font-family:'IBM Plex Mono',monospace; text-transform:uppercase; letter-spacing:0.04em;}
   .field input, .field textarea, .field select{
     width:100%; padding:13px 16px; border-radius:12px; border:1.5px solid var(--line);
     background:var(--white); font-family:'Alice', serif; font-size:15px; color:var(--ink);
     transition:border-color .2s ease;
   }
-  .field input:focus, .field textarea:focus, .field select:focus{outline:none; border-color:var(--blue-light);}
+  .field input:focus-visible, .field textarea:focus-visible, .field select:focus-visible{
+    border-color:var(--green-light); outline:3px solid var(--yellow); outline-offset:1px;
+  }
   .field textarea{resize:vertical; min-height:100px;}
 
   .contact-side{display:flex; flex-direction:column; gap:16px;}
@@ -548,18 +623,18 @@
     background:var(--white); border:1px solid var(--line); border-radius:var(--radius-md); padding:22px;
     display:flex; align-items:center; gap:16px; transition:all .25s ease;
   }
-  .contact-tile:hover{border-color:var(--blue-light); transform:translateX(4px);}
-  .contact-tile .ct-ic{width:46px; height:46px; border-radius:13px; background:var(--blue-pale); display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+  .contact-tile:hover{border-color:var(--green-light); transform:translateX(4px);}
+  .contact-tile .ct-ic{width:46px; height:46px; border-radius:13px; background:var(--mist); display:flex; align-items:center; justify-content:center; flex-shrink:0;}
   .contact-tile h5{font-family:'League Spartan', sans-serif; font-size:16px; font-weight:700; color:var(--ink); margin-bottom:2px;}
   .contact-tile p{font-size:13.5px; color:var(--ink-soft);}
   .social-row{display:flex; gap:10px; margin-top:6px;}
   .social-row a{
-    width:44px; height:44px; border-radius:13px; background:var(--blue); color:#fff;
+    width:44px; height:44px; border-radius:13px; background:var(--green); color:#fff;
     display:flex; align-items:center; justify-content:center; transition:all .25s ease;
   }
-  .social-row a:hover{background:var(--yellow); color:var(--blue); transform:translateY(-3px);}
+  .social-row a:hover{background:var(--yellow); color:var(--green); transform:translateY(-3px);}
 
-  footer{background:var(--blue); color:#fff; padding:64px 24px 28px;}
+  footer{background:var(--green); color:#fff; padding:64px 24px 28px;}
   .footer-grid{display:grid; grid-template-columns:1.6fr 1fr 1fr 1.4fr; gap:40px; max-width:1160px; margin:0 auto;}
   @media (max-width:820px){.footer-grid{grid-template-columns:1fr 1fr; row-gap:36px;}}
   @media (max-width:520px){.footer-grid{grid-template-columns:1fr;}}
@@ -574,7 +649,7 @@
     color:#fff; font-size:14px; font-family:'Alice', serif;
   }
   .newsletter-form input::placeholder{color:#A9C7B4;}
-  .newsletter-form button{background:var(--yellow); color:var(--blue); border:none; border-radius:12px; padding:0 18px; font-family:'League Spartan', sans-serif; font-weight:700; font-size:14px; cursor:pointer;}
+  .newsletter-form button{background:var(--yellow); color:var(--green); border:none; border-radius:12px; padding:0 18px; font-family:'League Spartan', sans-serif; font-weight:700; font-size:14px; cursor:pointer;}
   .foot-bottom{
     max-width:1160px; margin:48px auto 0; padding-top:24px; border-top:1px solid #2E5940;
     display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;
@@ -592,10 +667,8 @@
   }
   .wa-float:hover{transform:scale(1.08);}
 
-  .divider-rule{height:1px; background:repeating-linear-gradient(90deg, var(--line) 0 8px, transparent 8px 14px); margin:0 auto;}
-
   .toast{
-    position:fixed; bottom:96px; right:24px; background:var(--blue); color:#fff; padding:14px 20px;
+    position:fixed; bottom:96px; right:24px; background:var(--green); color:#fff; padding:14px 20px;
     border-radius:14px; font-size:14px; font-family:'League Spartan', sans-serif; font-weight:600; box-shadow:var(--shadow-lift);
     transform:translateY(20px); opacity:0; pointer-events:none; transition:all .35s cubic-bezier(.4,0,.2,1); z-index:200;
   }
@@ -621,7 +694,7 @@
   .article-body-new{padding:12px 14px 14px; display:flex; flex-direction:column; flex:1; gap:0;}
   .article-brand{
     font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600;
-    letter-spacing:0.08em; color:var(--blue-light); text-transform:uppercase;
+    letter-spacing:0.08em; color:var(--green-light); text-transform:uppercase;
     display:inline-block; margin-bottom:5px;
   }
   .article-title-new{
@@ -629,18 +702,9 @@
     color:var(--ink); margin-bottom:5px; line-height:1.2;
     display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
   }
-  .article-desc-new{
-    font-size:11.5px; color:var(--ink-soft); line-height:1.45;
-    margin-bottom:10px; flex:1;
-    display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;
-  }
-  .article-footer-new{
-    display:flex; align-items:center; justify-content:space-between;
-    gap:8px; margin-top:auto;
-  }
   .article-price-new{
     font-family:'League Spartan',sans-serif; font-weight:700;
-    font-size:16px; color:var(--blue); flex-shrink:0;
+    font-size:16px; color:var(--green); flex-shrink:0;
   }
 
   /* Pastilles de couleur */
@@ -651,7 +715,7 @@
     transition:transform .15s ease, box-shadow .15s ease;
   }
   .color-dot:hover{transform:scale(1.15);}
-  .color-dot.active{box-shadow:0 0 0 2px var(--blue); transform:scale(1.1);}
+  .color-dot.active{box-shadow:0 0 0 2px var(--green); transform:scale(1.1);}
 
   /* Placeholder quand pas d'image */
   .article-noimg{
@@ -678,7 +742,7 @@
 /* ---- Badge BEST-SELLER ---- */
 .article-badge{
   position:absolute; top:10px; left:10px; z-index:2;
-  background:var(--yellow); color:var(--blue);
+  background:var(--yellow); color:var(--green);
   font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600;
   letter-spacing:0.06em; padding:5px 10px; border-radius:100px;
   box-shadow:0 4px 12px -4px rgba(0,0,0,0.25);
@@ -691,7 +755,7 @@
 /* ---- Prix en pleine largeur au-dessus de l'action ---- */
 .article-price-new{
   font-family:'League Spartan',sans-serif; font-weight:700;
-  font-size:17px; color:var(--blue); margin-bottom:10px;
+  font-size:17px; color:var(--green); margin-bottom:10px;
 }
 .article-action{margin-top:auto;}
 .article-action .btn{width:100%; justify-content:center;}
@@ -711,14 +775,14 @@
 /* ---- Sélecteur de quantité sur la carte ---- */
 .qty-selector{
   display:flex; align-items:center; justify-content:space-between;
-  background:var(--blue-pale); border-radius:100px;
+  background:var(--mist); border-radius:100px;
   padding:4px; width:100%;
   animation:fade-in-qty .3s ease;
 }
 @keyframes fade-in-qty{from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:translateY(0);}}
 .qty-btn{
   width:34px; height:34px; border-radius:100px; border:none;
-  background:var(--white); color:var(--blue); cursor:pointer;
+  background:var(--white); color:var(--green); cursor:pointer;
   font-size:19px; font-weight:600; line-height:1;
   display:flex; align-items:center; justify-content:center;
   box-shadow:0 2px 6px -2px rgba(22,48,91,0.2);
@@ -728,7 +792,7 @@
 .qty-btn:active{transform:scale(0.94);}
 .qty-num{
   font-family:'League Spartan',sans-serif; font-weight:700;
-  font-size:16px; color:var(--blue); min-width:28px; text-align:center;
+  font-size:16px; color:var(--green); min-width:28px; text-align:center;
 }
 
 /* ---- Réassurance paiement dans le panier ---- */
@@ -738,7 +802,8 @@
   display:flex; flex-direction:column; align-items:center; gap:8px;
 }
 .cr-label{
- display: none; 
+  font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.09em;
+  text-transform:uppercase; color:var(--ink-soft);
 }
 .cr-logos{display:flex; align-items:center; gap:12px;}
 .cr-logos img{
@@ -748,16 +813,15 @@
 .cr-logos img:hover{opacity:1;}
 .cr-cash{
   font-size:11.5px; font-weight:600; color:var(--ink-soft);
-  background:var(--blue-pale); border-radius:100px; padding:4px 10px;
+  background:var(--mist); border-radius:100px; padding:4px 10px;
   opacity:0.8;
 }
-.cr-delivery{
- display: none;}
+.cr-delivery{font-size:12px; color:var(--ink-soft); text-align:center;}
 
 /* ---- Titres de section boutique ---- */
 .shop-section-title{
   font-family:'League Spartan',sans-serif; font-size:20px;
-  color:var(--blue); margin:8px 0 16px;
+  color:var(--green); margin:8px 0 16px;
 }
 
 /* ---- Bande de packs scrollable (mobile) ---- */
@@ -825,4 +889,257 @@
   /* Réassurance plus compacte */
   .cart-reassurance{padding:10px 12px; gap:6px;}
   .cr-logos img{height:22px;}
+}
+
+/* ==========================================================================
+   AJOUTS — accessibilité, filtres boutique, fiche produit, panier détaillé
+   ========================================================================== */
+
+/* ---- Lien d'évitement : première tabulation = aller au contenu ---- */
+.skip-link{
+  position:absolute; left:16px; top:-60px; z-index:300;
+  background:var(--green); color:#fff; padding:12px 20px; border-radius:0 0 14px 14px;
+  font-family:'League Spartan',sans-serif; font-weight:700; font-size:15px;
+  transition:top .2s ease;
+}
+.skip-link:focus{top:0;}
+
+/* ---- Anneau de focus visible partout (il n'y en avait aucun) ----
+   :focus-visible ne s'affiche qu'au clavier : la souris ne voit rien changer. */
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible{
+  outline:3px solid var(--yellow);
+  outline-offset:2px;
+  border-radius:6px;
+}
+/* sur fond vert, le jaune ressort mal : on repasse en blanc */
+footer a:focus-visible, .devis-card a:focus-visible, .contact-side a:focus-visible,
+#contact button:focus-visible, .btn-whatsapp:focus-visible{
+  outline-color:#fff;
+}
+
+/* ---- Burger : bouton natif (c'était une div non focusable) ---- */
+.burger{border:none; padding:0; font:inherit;}
+
+/* ==========================================================================
+   BOUTIQUE — filtres par famille, tri, compteur
+   ========================================================================== */
+.shop-toolbar{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:16px; flex-wrap:wrap; margin:0 auto 18px; max-width:1160px;
+}
+.shop-count{
+  font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink-soft);
+  letter-spacing:0.02em;
+}
+.shop-sort{display:flex; align-items:center; gap:8px;}
+.shop-sort label{
+  font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:0.08em;
+  text-transform:uppercase; color:var(--ink-soft);
+}
+.shop-sort select{
+  border:1.5px solid var(--line); background:var(--white); border-radius:100px;
+  padding:9px 16px; font-family:'League Spartan',sans-serif; font-size:14px;
+  font-weight:600; color:var(--green); cursor:pointer;
+}
+
+/* Filtres par famille : les catégories existaient déjà dans les données
+   mais n'étaient affichées que comme étiquette, jamais cliquables. */
+.shop-filters{
+  display:flex; gap:8px; flex-wrap:wrap; justify-content:center;
+  margin:0 auto 26px; max-width:900px;
+}
+.shop-chip{
+  font-family:'League Spartan',sans-serif; font-size:13.5px; font-weight:600;
+  padding:8px 16px; border-radius:100px; cursor:pointer;
+  border:1.5px solid var(--line); background:var(--white); color:var(--ink-soft);
+  transition:border-color .2s ease, color .2s ease, background .2s ease;
+}
+.shop-chip:hover{border-color:var(--green-light); color:var(--green);}
+.shop-chip.active{background:var(--mist); border-color:var(--green); color:var(--green);}
+
+/* ==========================================================================
+   CARTE ARTICLE — la photo et le titre ouvrent la fiche produit
+   ========================================================================== */
+.article-img-wrap{
+  border:none; font:inherit; cursor:pointer; width:100%;
+  aspect-ratio:1/0.85; background:var(--white); position:relative;
+  padding:10px; display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+}
+.article-title-btn{
+  background:none; border:none; padding:0; font:inherit; color:inherit;
+  text-align:left; cursor:pointer; width:100%;
+}
+.article-title-btn:hover{color:var(--green); text-decoration:underline; text-underline-offset:2px;}
+.article-noimg{
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:6px; color:var(--ink-soft); opacity:0.5; height:100%; width:100%;
+}
+
+/* ==========================================================================
+   FICHE PRODUIT (modale)
+   La carte tronque le nom à 2 lignes : la fiche est le seul endroit où le
+   nom complet et la photo en grand sont lisibles.
+   ========================================================================== */
+.modal-overlay{
+  position:fixed; inset:0; background:rgba(27,54,36,0.45); backdrop-filter:blur(3px);
+  z-index:160; opacity:0; pointer-events:none; transition:opacity .25s ease;
+}
+.modal-overlay.open{opacity:1; pointer-events:auto;}
+.product-modal{
+  position:fixed; z-index:161; left:50%; top:50%;
+  transform:translate(-50%,-48%) scale(0.97);
+  width:min(760px, calc(100vw - 32px)); max-height:min(88vh, 720px); overflow-y:auto;
+  background:var(--white); border-radius:26px; box-shadow:var(--shadow-lift);
+  display:grid; grid-template-columns:1fr 1fr; gap:0;
+  opacity:0; pointer-events:none; transition:opacity .25s ease, transform .25s cubic-bezier(.4,0,.2,1);
+}
+.product-modal.open{opacity:1; pointer-events:auto; transform:translate(-50%,-50%) scale(1);}
+@media (max-width:680px){
+  .product-modal{grid-template-columns:1fr; width:calc(100vw - 24px);}
+}
+.modal-close{
+  position:absolute; top:12px; right:12px; z-index:2;
+  width:36px; height:36px; border-radius:100px; border:none; cursor:pointer;
+  background:var(--white); color:var(--green); font-size:14px;
+  box-shadow:0 4px 14px -4px rgba(27,54,36,0.3);
+}
+.modal-media{
+  background:var(--cream); display:flex; align-items:center; justify-content:center;
+  padding:28px; min-height:260px; border-radius:26px 0 0 26px;
+}
+@media (max-width:680px){ .modal-media{border-radius:26px 26px 0 0; min-height:200px; padding:22px;} }
+.modal-media img{max-width:100%; max-height:300px; object-fit:contain;}
+.modal-body{padding:28px 30px 30px; display:flex; flex-direction:column; gap:10px;}
+.modal-body h3{font-family:'League Spartan',sans-serif; font-size:23px; line-height:1.2;}
+.modal-price{font-family:'League Spartan',sans-serif; font-weight:700; font-size:28px; color:var(--green);}
+.modal-body .article-action{margin-top:4px;}
+.modal-ask{
+  display:inline-flex; align-items:center; gap:8px; color:var(--green-light);
+  font-size:14px; font-weight:600; font-family:'League Spartan',sans-serif;
+  text-decoration:underline; text-underline-offset:3px; margin-top:2px;
+}
+.modal-ask:hover{color:var(--green);}
+.modal-note{font-size:12.5px; color:var(--ink-soft); line-height:1.5; margin-top:2px;}
+
+/* ==========================================================================
+   PANIER — quantité modifiable, sous-total / livraison / total
+   ========================================================================== */
+.cart-empty{text-align:center; padding:44px 0; display:flex; flex-direction:column; align-items:center; gap:16px;}
+.cart-empty p{color:var(--ink-soft); font-size:14.5px;}
+.ci-icon{overflow:hidden;}
+.ci-icon img{width:100%; height:100%; object-fit:contain; padding:3px;}
+.ci-variant{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-soft);}
+.ci-unit{font-size:12px; color:var(--ink-soft);}
+.ci-qty{display:flex; align-items:center; gap:10px; margin-top:8px;}
+.ci-qty button{
+  width:26px; height:26px; border-radius:8px; border:1px solid var(--line);
+  background:var(--white); cursor:pointer; font-size:14px; color:var(--green); line-height:1;
+}
+.ci-qty button:hover{border-color:var(--green); background:var(--mist);}
+.ci-qty > span{font-family:'IBM Plex Mono',monospace; font-size:13px; min-width:16px; text-align:center;}
+.ci-line{
+  margin-left:auto; font-family:'League Spartan',sans-serif; font-weight:700;
+  font-size:14px; color:var(--green);
+}
+.cart-sum{display:flex; flex-direction:column; gap:7px; margin-bottom:12px;}
+.cart-sum-row{
+  display:flex; justify-content:space-between; align-items:baseline;
+  font-size:14px; color:var(--ink-soft);
+}
+.cart-sum-row span:last-child{font-family:'League Spartan',sans-serif; font-weight:600; color:var(--ink);}
+.cart-sum-row .is-tbc{font-size:12.5px; font-weight:500; color:var(--ink-soft); font-style:italic;}
+.cart-delivery-hint{
+  font-size:12px; color:var(--green-light); background:var(--mist);
+  border-radius:10px; padding:8px 11px; line-height:1.45;
+}
+.cart-total-row{
+  border-top:1px solid var(--line); padding-top:12px;
+}
+
+/* ==========================================================================
+   MOBILE — la réassurance du hero ne doit pas disparaître
+   Les pastilles flottantes sont illisibles sur petit écran, mais les faire
+   disparaître supprimait les 3 arguments de vente. On les remplace par une
+   bande compacte, visible uniquement sous 820px.
+   ========================================================================== */
+.hero-reassure{display:none;}
+@media (max-width:820px){
+  .hero-reassure{
+    display:flex; gap:8px; justify-content:center; flex-wrap:wrap;
+    margin:0 auto 28px; max-width:520px;
+  }
+  .hero-reassure span{
+    display:inline-flex; align-items:center; gap:6px;
+    background:var(--white); border:1px solid var(--line); border-radius:100px;
+    padding:8px 14px; font-size:12.5px; font-weight:600; color:var(--green);
+    font-family:'League Spartan',sans-serif;
+    box-shadow:0 4px 14px -8px rgba(27,54,36,0.25);
+  }
+}
+
+/* Aperçu produits sur l'accueil */
+.preview-head{
+  display:flex; align-items:baseline; justify-content:space-between;
+  gap:16px; flex-wrap:wrap; margin-bottom:20px;
+}
+.preview-head h3{font-family:'League Spartan',sans-serif; font-size:21px;}
+.preview-link{
+  font-family:'League Spartan',sans-serif; font-weight:700; font-size:14.5px;
+  color:var(--green-light); text-decoration:underline; text-underline-offset:3px;
+}
+.preview-link:hover{color:var(--green);}
+
+/* Case trousse : la parenthèse explicative ne doit pas concurrencer le libellé */
+.pack-trousse .note{color:var(--ink-soft); opacity:0.85; font-size:12px;}
+
+/* ==========================================================================
+   MOUVEMENT RÉDUIT — respecte le réglage système d'accessibilité
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after{
+    animation-duration:0.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:0.001ms !important;
+    scroll-behavior:auto !important;
+  }
+  html{scroll-behavior:auto;}
+  .reveal{opacity:1 !important; transform:none !important;}
+  .highlight::after{transform:scaleX(1) !important;}
+  .marquee-content{animation:none !important;}
+  .floating-pill{animation:none !important;}
+}
+
+/* Visible uniquement pour les lecteurs d'écran (libellés de champs) */
+.sr-only{
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;
+}
+
+/* Illustration « à propos » : la règle manquait, l'image n'avait aucune contrainte */
+.about-illustration{
+  max-width:100%; max-height:100%; width:auto; height:auto;
+  object-fit:contain; display:block;
+}
+
+/* ==========================================================================
+   MOBILE — les packs en bande horizontale sur l'accueil aussi
+   Quatre cartes de pack empilées occupaient à elles seules près de deux
+   écrans et repoussaient tout le reste de la page.
+   ========================================================================== */
+@media (max-width:600px){
+  .pack-grid{
+    display:flex; overflow-x:auto; gap:14px;
+    grid-template-columns:none;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    padding-bottom:12px;
+    scrollbar-width:none;
+    /* déborde volontairement des marges de section pour montrer qu'on scrolle */
+    margin:0 -20px; padding-left:20px; padding-right:20px;
+  }
+  .pack-grid::-webkit-scrollbar{display:none;}
+  .pack-grid > .pack-card{flex:0 0 82%; scroll-snap-align:start;}
+  .pack-grid::after{content:''; flex:0 0 4px;}
 }
