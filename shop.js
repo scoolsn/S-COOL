@@ -128,7 +128,7 @@ function renderShop(){
   if(total === 0){
     empty.style.display = 'block';
     document.getElementById('shopEmptyTitle').textContent = query
-      ? `Aucun résultat pour "${query}" — pas encore ajouté au site`
+      ? `Aucun résultat pour "${query}", pas encore ajouté au site`
       : `Rien dans cette catégorie pour l'instant`;
     document.getElementById('shopEmptyBtn').href = waLink(query
       ? `Bonjour S'Cool, je cherche : "${query}". Est-ce disponible ?`

@@ -10,7 +10,7 @@ const TESTIMONIALS = [
 
 const FAQS = [
   {q:"Comment passer une commande ?", a:"Choisissez votre pack, ajoutez-le au panier puis cliquez sur « Valider sur WhatsApp ». On confirme votre commande et le paiement directement sur WhatsApp, en général sous 2h."},
-  {q:"Quels sont les délais de livraison ?", a:"Comptez jusqu'à 48h pour Dakar et sa banlieue — vous êtes prévenu(e) en cas de retard. Une livraison dans les autres régions du Sénégal est possible, au cas par cas : écrivez-nous pour un délai précis."},
+  {q:"Quels sont les délais de livraison ?", a:"Comptez jusqu'à 48h pour Dakar et sa banlieue, et vous êtes prévenu(e) en cas de retard. Une livraison dans les autres régions du Sénégal est possible, au cas par cas : écrivez-nous pour un délai précis."},
   {q:"Comment puis-je payer ?", a:"Wave, Orange Money, ou en espèces à la livraison. Le montant exact, livraison comprise, vous est confirmé sur WhatsApp avant tout paiement."},
   {q:"Puis-je retourner un produit ?", a:"Oui, tout article non utilisé peut être échangé sous 7 jours avec preuve d'achat. Contactez-nous simplement sur WhatsApp."},
   {q:"Le contenu éducatif est-il payant ?", a:"Non, quand le hub Student Resources sera lancé, il sera gratuit et accessible à tous, sans compte à créer."},
@@ -21,14 +21,15 @@ const FAQS = [
 document.getElementById('packGrid').innerHTML = PACKS.map(packCard).join('');
 
 /* Aperçu boutique sur l'accueil : le visiteur voit des produits et des prix
-   sans avoir à changer de page. Le premier article du catalogue porte le
-   badge BEST-SELLER, les suivants suivent l'ordre de shared.js. */
+   sans avoir à changer de page. Les 3 produits mis en avant sont choisis à la
+   main ici, dans l'ordre d'affichage voulu (et non plus déduits du catalogue).
+   Pour changer la vitrine : modifie simplement les identifiants ci-dessous. */
+const PREVIEW_IDS = ['p100', 'p33', 'p17'];
 const previewEl = document.getElementById('articlePreview');
 if(previewEl){
-  const featured = [
-    ...ARTICLES.filter(a => a.badge),
-    ...ARTICLES.filter(a => !a.badge && a.image)
-  ].slice(0, 4);
+  const featured = PREVIEW_IDS
+    .map(id => ARTICLES.find(a => a.id === id))
+    .filter(Boolean);
   previewEl.innerHTML = featured.map(articleCard).join('');
 }
 
@@ -76,19 +77,6 @@ function submitContact(e){
   const sujet = document.getElementById('cf-sujet').value;
   const message = document.getElementById('cf-message').value.trim();
   window.open(waLink(`Bonjour S'Cool,\n\nNom : ${nom}\nSujet : ${sujet}\n\nMessage :\n${message}`), '_blank', 'noopener');
-  e.target.reset();
-  return false;
-}
-
-/* Newsletter : il n'y a pas encore de service d'envoi branché derrière.
-   Plutôt que d'afficher une fausse confirmation d'inscription, on bascule
-   la demande sur WhatsApp — le seul canal réellement relevé aujourd'hui. */
-function submitNewsletter(e){
-  e.preventDefault();
-  const email = e.target.querySelector('input[type="email"]').value.trim();
-  if(!email) return false;
-  window.open(waLink(`Bonjour S'Cool, je souhaite recevoir vos nouveautés. Mon email : ${email}`), '_blank', 'noopener');
-  showToast('Merci ! Confirmez simplement l\'envoi sur WhatsApp.');
   e.target.reset();
   return false;
 }
