@@ -72,7 +72,7 @@ const PACKS = [
    Pour AJOUTER une variante couleur : ajoute un tableau "colors:[...]". */
 const ARTICLES = [
   /* ⭐ BEST-SELLER — produit phare S'Cool, affiché en premier. */
-  {id:"p100", name:"La SPECIALE — Cahier feuille blanche relié", cat:"Rangement", price:2000,
+  {id:"p100", name:"La SPECIALE, cahier feuille blanche relié", cat:"Rangement", price:2000,
    image:"images/produits/cahier-relie.webp", badge:"BEST-SELLER"},
   {id:"p1", name:"Crayons de couleur Color'Peps Strong x12 MAPED", cat:"Coloriage", price:1600, image:"images/produits/1.webp"},
   {id:"p2", name:"Crayons de couleur Color'Peps Mini Strong x12 MAPED", cat:"Coloriage", price:800, image:"images/produits/2.webp"},
@@ -142,10 +142,6 @@ function packCard(pack){
     <ul class="pack-items" id="packItems-${pack.id}">
       ${pack.items.map(i=>`<li>${i}</li>`).join('')}
     </ul>
-    <label class="pack-trousse">
-      <input type="checkbox" id="trousse-${pack.id}">
-      <span>+ Ajouter une trousse <span class="note">(prix confirmé sur WhatsApp)</span></span>
-    </label>
     <div class="article-action" id="action-${pack.id}">${cardActionHtml(pack.id)}</div>
   </article>`;
 }
@@ -479,8 +475,8 @@ document.addEventListener('DOMContentLoaded', function(){
       "position": i+1,
       "item": {
         "@type":"Product",
-        "name": p.name + (PACKS.includes(p) ? ' — Pack de rentrée S’Cool' : ''),
-        "description": p.desc || `${p.name} — ${p.cat || 'fourniture scolaire'} disponible chez S'Cool à Dakar.`,
+        "name": p.name + (PACKS.includes(p) ? ' : pack de rentrée S’Cool' : ''),
+        "description": p.desc || `${p.name}, ${p.cat || 'fourniture scolaire'} disponible chez S'Cool à Dakar.`,
         "category": p.cat || 'Pack de rentrée',
         ...(p.image ? {"image": BASE + p.image} : {}),
         "offers": {

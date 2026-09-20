@@ -37,7 +37,7 @@ function saveCart(){
   catch(e){ /* stockage indisponible : le panier reste fonctionnel pour la session en cours */ }
 }
 
-// État du panier : { id_produit: { qty, trousse, color } }
+// État du panier : { id_produit: { qty, color } }
 let cart = loadCart();
 
 /* Seules les lignes qui correspondent encore à un produit existant comptent.
@@ -58,14 +58,10 @@ function addToCart(id, hasColors){
       cartKey = id + '::' + colorName;
     }
   }
-  const trousseEl = document.getElementById('trousse-'+id);
-  const wantsTrousse = !!(trousseEl && trousseEl.checked);
   if(cart[cartKey]){
     cart[cartKey].qty += 1;
-    // La case trousse peut avoir été cochée après un premier ajout : on la respecte.
-    if(wantsTrousse) cart[cartKey].trousse = true;
   } else {
-    cart[cartKey] = { qty: 1, trousse: wantsTrousse, color: colorName };
+    cart[cartKey] = { qty: 1, color: colorName };
   }
   saveCart();
   renderCart();
@@ -141,7 +137,7 @@ function renderCart(){
       return `<div class="cart-item">
         <div class="ci-icon" style="color:${p.accent || 'var(--green)'};">${thumb}</div>
         <div class="ci-info">
-          <h6>${p.name}${item.color ? ' <span class="ci-variant">· '+item.color+'</span>' : ''}${item.trousse ? ' <span class="ci-variant">+ trousse</span>' : ''}</h6>
+          <h6>${p.name}${item.color ? ' <span class="ci-variant">· '+item.color+'</span>' : ''}</h6>
           <span class="mono ci-unit">${priceStr(p.price)}</span>
           <div class="ci-qty">
             <button type="button" onclick="changeQty('${id}', -1)" aria-label="Retirer un ${attr(p.name)}">−</button>
@@ -228,7 +224,7 @@ function checkoutCartWhatsapp(){
   const lines = ["Bonjour S'Cool, je souhaite commander :"];
   entries.forEach(([id, item])=>{
     const p = findItem(id);
-    lines.push(`- ${p.name}${item.color ? ' ('+item.color+')' : ''} x${item.qty} (${priceStr(p.price * item.qty)})${item.trousse ? ' + trousse (prix à confirmer)' : ''}`);
+    lines.push(`- ${p.name}${item.color ? ' ('+item.color+')' : ''} x${item.qty} (${priceStr(p.price * item.qty)})`);
   });
   const fee = deliveryFee();
   lines.push('');

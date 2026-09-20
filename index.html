@@ -20,8 +20,9 @@
 <meta name="twitter:title" content="S'Cool, ta rentrée démarre ici.">
 <meta name="twitter:description" content="Fournitures scolaires premium et packs de rentrée. Commande directe sur WhatsApp, livraison à Dakar sous 48h.">
 <meta name="twitter:image" content="https://scoolsn.github.io/S-COOL/images/og-image.webp">
-<link rel="icon" type="image/webp" sizes="32x32" href="images/scoollogopng/favicon.webp">
-<link rel="apple-touch-icon" href="images/scoollogopng/favicon.webp">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="images/scoollogopng/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="images/scoollogopng/favicon-180.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -68,7 +69,7 @@
 <!-- NAV -->
 <header>
   <nav aria-label="Navigation principale">
-    <a href="#home" class="logo"><img class="logo-img" src="images/scoollogopng/mainlogo.webp" alt="S'Cool, accueil" width="120" height="120"></a>
+    <a href="#home" class="logo"><img class="logo-img" src="images/scoollogopng/mainlogo.webp" alt="S'Cool, accueil" width="338" height="84"></a>
     <div class="nav-right">
       <div class="nav-links" id="navLinks">
         <a href="#home">Home</a>
@@ -116,13 +117,6 @@
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><rect x="9" y="3" width="6" height="4" rx="1" stroke="currentColor" stroke-width="1.7"/><path d="M9 12h6M9 16h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         Devis gratuit
       </a>
-    </div>
-
-    <!-- Réassurance mobile : reprend les 3 pastilles, masquées sous 820px -->
-    <div class="hero-reassure reveal">
-      <span>⚡ Livraison 48h Dakar</span>
-      <span>🎒 Packs dès 4 900 F</span>
-      <span>✨ BIC, MAPED, MILAN</span>
     </div>
 
     <!-- ILLUSTRATION SOUS LE TEXTE -->
@@ -203,12 +197,25 @@
       <div class="devis-copy">
         <span class="eyebrow">Devis sur liste</span>
         <h2 class="devis-title" id="devis-title">Une liste de fournitures ?<br>S'Cool s'en occupe.</h2>
-        <p class="devis-sub">Envoyez la liste de l'école, une photo suffit. On identifie chaque article, on vous renvoie le prix complet, et vous n'avez plus à faire le tour des boutiques.</p>
-        <ul class="devis-proof">
-          <li>Gratuit, sans engagement</li>
-          <li>Réponse sous ~2h</li>
-          <li>Photo, PDF ou document</li>
-        </ul>
+
+        <ol class="devis-steps">
+          <li class="devis-step">
+            <span class="devis-ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 3 10.5 13.5M21 3l-6.8 18-3.7-7.5L3 9.8 21 3Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <h3>Envoyez votre liste</h3>
+          </li>
+          <li class="devis-step">
+            <span class="devis-ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.7"/><path d="m20 20-3.9-3.9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+            <h3>On recherche</h3>
+          </li>
+          <li class="devis-step">
+            <span class="devis-ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M14 3v5h5M9.5 13h5M9.5 17h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+            <h3>Vous recevez le devis</h3>
+          </li>
+          <li class="devis-step">
+            <span class="devis-ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="m8 12.2 2.7 2.7L16 9.6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <h3>Vous validez</h3>
+          </li>
+        </ol>
         <a href="https://wa.me/221762098743?text=Bonjour%20S%27Cool%2C%20je%20souhaite%20recevoir%20un%20devis%20pour%20la%20liste%20de%20fournitures%20de%20mon%20enfant.%20Je%20vous%20envoie%20la%20liste%20(photo%2FPDF)%20juste%20apr%C3%A8s%20ce%20message." target="_blank" rel="noopener" class="btn btn-yellow devis-cta" id="devisCta" data-wa-icon="17">
           Envoyer ma liste
         </a>
@@ -236,24 +243,11 @@
       </div>
     </div>
 
-    <ol class="devis-steps reveal">
-      <li class="devis-step">
-        <span class="devis-ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 3 10.5 13.5M21 3l-6.8 18-3.7-7.5L3 9.8 21 3Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        <h3>Envoyez votre liste</h3>
-      </li>
-      <li class="devis-step">
-        <span class="devis-ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.7"/><path d="m20 20-3.9-3.9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
-        <h3>On recherche</h3>
-      </li>
-      <li class="devis-step">
-        <span class="devis-ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M14 3v5h5M9.5 13h5M9.5 17h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
-        <h3>Vous recevez le devis</h3>
-      </li>
-      <li class="devis-step">
-        <span class="devis-ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="m8 12.2 2.7 2.7L16 9.6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        <h3>Vous validez</h3>
-      </li>
-    </ol>
+    <ul class="devis-proof reveal">
+      <li>Gratuit, sans engagement</li>
+      <li>Réponse sous ~2h</li>
+      <li>Photo, PDF ou document</li>
+    </ul>
   </div>
 </section>
 
@@ -410,7 +404,7 @@
 <footer>
   <div class="footer-grid">
     <div>
-      <a href="#home" class="logo logo-footer"><img class="logo-img-footer" src="images/scoollogopng/mainlogo.webp" alt="S'Cool" width="120" height="120" loading="lazy"></a>
+      <a href="#home" class="logo logo-footer"><img class="logo-img-footer" src="images/scoollogopng/mainlogo.webp" alt="S'Cool" width="338" height="84" loading="lazy"></a>
       <p class="blurb">Fournitures scolaires premium et ressources éducatives pour aider chaque élève à réussir son année.</p>
     </div>
     <div>
