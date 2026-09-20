@@ -160,7 +160,7 @@ function renderCart(){
   if(subEl) subEl.textContent = priceStr(sub);
   if(feeEl){
     feeEl.textContent = fee == null ? 'confirmée sur WhatsApp'
-                      : fee === 0   ? (sub === 0 ? '—' : 'Offerte')
+                      : fee === 0   ? (sub === 0 ? '0 FCFA' : 'Offerte')
                       : priceStr(fee);
     feeEl.classList.toggle('is-tbc', fee == null);
   }
