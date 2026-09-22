@@ -4,8 +4,8 @@
    ========================================================================== */
 
 const TESTIMONIALS = [
-  {name:"Aïssatou D.", role:"Élève en Terminale, Dakar", quote:"Les fiches sur la gestion du temps m'ont vraiment aidée à tenir pendant le Bac blanc. Et le sac tient encore nickel après un an.", color:"#16305B"},
-  {name:"Moussa K.", role:"Parent d'élève, Thiès", quote:"Commander sur WhatsApp c'était super simple, livré en 2 jours. La qualité des cahiers est clairement au-dessus de la moyenne.", color:"#2E4E85"}
+  {name:"Client S'Cool", role:"Avis vérifié", quote:"Merciiii j'ai bien reçu la commande je suis vrmt satisfaite ✨", color:"#16305B"},
+  {name:"Fama Seye", role:"Élève", quote:"Tbh j'ai adoré mon expérience avec S'cool. Le service il est juste impeccable, respectueux, patient et à l'écoute sachant que j'étais très exigeante. Mais la qualité des matériels ? Rien à dire, je les ai utilisés toute l'année sans aucun soucis et je peux même les réutiliser pour l'année prochaine, donc vraiment 10/10 je conseille 🤸", color:"#2E4E85"}
 ];
 
 const FAQS = [
