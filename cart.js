@@ -228,8 +228,6 @@ function checkoutCartWhatsapp(){
   });
   const fee = deliveryFee();
   lines.push('');
-  lines.push(`Sous-total : ${priceStr(cartSubtotal())}`);
-  lines.push(`Livraison Dakar : ${fee == null ? 'à confirmer' : fee === 0 ? 'offerte' : priceStr(fee)}`);
   lines.push(`TOTAL ${fee == null ? '(hors livraison)' : ''}: ${priceStr(cartTotal())}`);
   window.open(waLink(lines.join('\n')), '_blank', 'noopener');
 }
