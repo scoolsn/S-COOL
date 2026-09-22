@@ -76,6 +76,7 @@ function submitContact(e){
   const nom = document.getElementById('cf-nom').value.trim();
   const sujet = document.getElementById('cf-sujet').value;
   const message = document.getElementById('cf-message').value.trim();
+  trackWA('formulaire_contact');
   window.open(waLink(`Bonjour S'Cool,\n\nNom : ${nom}\nSujet : ${sujet}\n\nMessage :\n${message}`), '_blank', 'noopener');
   e.target.reset();
   return false;

@@ -12,6 +12,23 @@ function waLink(text){
   return 'https://wa.me/' + WA_NUMBER + (text ? '?text=' + encodeURIComponent(text) : '');
 }
 
+/* ---------- SUIVI DES CLICS WHATSAPP (Google Analytics) ----------
+   Un seul événement "click_whatsapp" pour tous les boutons/liens WhatsApp
+   du site, avec un paramètre wa_location pour savoir LEQUEL a été cliqué
+   (hero, panier, fiche produit, formulaire contact...).
+   Pour ajouter un nouveau bouton WhatsApp au suivi : mets simplement
+   data-wa-loc="mon_nom" sur le lien <a href="https://wa.me/..."> —
+   il sera capté automatiquement, rien d'autre à faire. */
+function trackWA(loc){
+  if(typeof gtag === 'function'){
+    gtag('event', 'click_whatsapp', { wa_location: loc || 'autre' });
+  }
+}
+document.addEventListener('click', function(e){
+  const link = e.target.closest('a[href*="wa.me"]');
+  if(link) trackWA(link.dataset.waLoc || 'autre');
+});
+
 function priceStr(p){ return p.toLocaleString('fr-FR') + ' FCFA'; }
 
 /* Normalisation pour la recherche : minuscules SANS accents.
@@ -328,7 +345,9 @@ function openProduct(id){
   const action = document.getElementById('modalAction');
   action.dataset.id = id;
   action.innerHTML = cardActionHtml(id);
-  document.getElementById('modalAsk').href = waLink(`Bonjour S'Cool, j'ai une question sur : ${a.name} (${priceStr(a.price)}).`);
+  const modalAsk = document.getElementById('modalAsk');
+  modalAsk.href = waLink(`Bonjour S'Cool, j'ai une question sur : ${a.name} (${priceStr(a.price)}).`);
+  modalAsk.dataset.waLoc = 'fiche_produit';
 
   document.getElementById('productModal').classList.add('open');
   document.getElementById('productModal').setAttribute('aria-hidden','false');
@@ -445,6 +464,7 @@ document.addEventListener('DOMContentLoaded', function(){
   a.href = waLink("Bonjour S'Cool, j'aurais une question.");
   a.target = '_blank';
   a.rel = 'noopener';
+  a.dataset.waLoc = 'bouton_flottant';
   a.setAttribute('aria-label', 'Nous écrire sur WhatsApp');
   a.innerHTML = waIcon(26);
   document.body.appendChild(a);

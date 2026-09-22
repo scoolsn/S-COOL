@@ -229,6 +229,7 @@ function checkoutCartWhatsapp(){
   const fee = deliveryFee();
   lines.push('');
   lines.push(`TOTAL ${fee == null ? '(hors livraison)' : ''}: ${priceStr(cartTotal())}`);
+  trackWA('panier');
   window.open(waLink(lines.join('\n')), '_blank', 'noopener');
 }
 
