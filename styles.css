@@ -511,9 +511,10 @@
 .devis-ico{
   display:inline-flex; align-items:center; justify-content:center;
   width:44px; height:44px; border-radius:100px;
-  background:var(--yellow); color:var(--green);
+  background:var(--green); color:var(--yellow);
+box-shadow:0 8px 18px -8px rgba(27,54,36,0.5);
   margin-bottom:14px; position:relative; z-index:1;
-  box-shadow:0 8px 18px -8px rgba(246,185,10,0.7);
+ 
 }
 .devis-step h3{font-size:16px; color:var(--green); margin-bottom:0; font-family:'League Spartan',sans-serif; font-weight:700;}
 
