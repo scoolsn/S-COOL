@@ -82,15 +82,33 @@ const PACKS = [
    Source : base de stock réelle S'Cool — 35 produits.
    Prix de vente arrondis à la valeur ronde supérieure.
    Images : dossier images/produits/ (format .webp).
-   Photos encore manquantes (p9, p30, p31, p32, p35) → image:"" affiche
-   le placeholder "Photo bientôt". Dès que la photo est prise, il suffit
-   de remettre le chemin ici.
+   Photos encore manquantes (p38 gris/bleu de nuit, p43, p44) : le chemin
+   images/produits/XX.webp est déjà renseigné, il suffit d'uploader le
+   fichier avec ce nom exact. Sans fichier : placeholder "Photo bientôt".
    Pour MODIFIER un prix : change la valeur "price".
    Pour AJOUTER une variante couleur : ajoute un tableau "colors:[...]". */
 const ARTICLES = [
   /* ⭐ BEST-SELLER — produit phare S'Cool, affiché en premier. */
   {id:"p100", name:"La SPECIALE, cahier feuille blanche relié", cat:"Rangement", price:2000,
    image:"images/produits/cahier-relie.webp", badge:"BEST-SELLER"},
+
+  /* ---------- NOUVEAUTÉS (rentrée) ---------- */
+  {id:"p36", name:"Marqueur effaçable Maxx 293 SCHNEIDER", cat:"Écriture", price:700, badge:"Nouveau",
+   image:"images/produits/36vert.webp",
+   colors:[{name:"Rouge",hex:"red",image:"images/produits/36rouge.webp"},{name:"Vert",hex:"#1E9A4A",image:"images/produits/36vert.webp"},{name:"Bleu",hex:"#2446C4",image:"images/produits/36bleu.webp"},{name:"Noir",hex:"#1A1A1A",image:"images/produits/36noir.webp"}]},
+  {id:"p37", name:"Marqueur permanent Marking 2000 BIC", cat:"Écriture", price:600, image:"images/produits/37.webp", badge:"Nouveau"},
+  {id:"p38", name:"Trousse 2 compartiments EASTPAK", cat:"Rangement", price:5500, badge:"Nouveau",
+   image:"images/produits/38rose.webp",
+   colors:[{name:"Rose",hex:"#E8A4C4",image:"images/produits/38rose.webp"},{name:"Noir",hex:"#1A1A1A",image:"images/produits/38noir.webp"}]},
+  {id:"p39", name:"Calculatrice scientifique fx-991ES Plus CASIO", cat:"Écriture", price:4500, image:"images/produits/39.webp", badge:"Populaire"},
+  {id:"p40", name:"Rame de papier A4 80g 500 feuilles EZ PAPER", cat:"Papeterie", price:3500, image:"images/produits/40.webp", badge:"Nouveau"},
+  {id:"p42", name:"Cahier seyès 288 pages 24x32 CALLIGRAPHE 7000", cat:"Rangement", price:4000, image:"images/produits/42.webp", badge:"Nouveau"},
+  {id:"p45", name:"Cahier 192 pages 17x22 L'ÉCOLIER", cat:"Rangement", price:2300, image:"images/produits/45.webp", badge:"Nouveau"},
+  {id:"p46", name:"Papier millimétré A4 90g 12 feuilles CANSON", cat:"Papeterie", price:2000, image:"images/produits/46.webp", badge:"Nouveau"},
+  {id:"p47", name:"Papier calque A3 90g 10 feuilles CANSON", cat:"Papeterie", price:2000, image:"images/produits/47.webp", badge:"Nouveau"},
+  {id:"p48", name:"Copies doubles A4 quadrillé 5x5 x50 CALLIGRAPHE", cat:"Papeterie", price:2300, image:"images/produits/48.webp", badge:"Nouveau"},
+  {id:"p49", name:"Copies doubles 17x22 séyès x50 CALLIGRAPHE", cat:"Papeterie", price:1500, image:"images/produits/49.webp", badge:"Nouveau"},
+  {id:"p50", name:"Cahier spirale 5 sujets A4 240 pages BLEU MARINE", cat:"Rangement", price:3500, image:"images/produits/50.webp", badge:"Nouveau"},
   {id:"p1", name:"Crayons de couleur Color'Peps Strong x12 MAPED", cat:"Coloriage", price:1500, image:"images/produits/1.webp"},
   {id:"p2", name:"Crayons de couleur Color'Peps Mini Strong x12 MAPED", cat:"Coloriage", price:700, image:"images/produits/2.webp"},
   {id:"p3", name:"Crayon noir 2B MAPED", cat:"Écriture", price:200, image:"images/produits/3.webp"},
@@ -99,7 +117,8 @@ const ARTICLES = [
   {id:"p6", name:"Gomme blanche Technic 300 MAPED", cat:"Correction", price:150, image:"images/produits/6.webp"},
   {id:"p7", name:"Compas à crayon Study Neon MAPED", cat:"Traçage", price:1500, image:"images/produits/7.webp"},
   {id:"p8", name:"Stylo 4 couleurs Take4 SCHNEIDER", cat:"Écriture", price:1450, image:"images/produits/8.webp"},
-  {id:"p9", name:"Stylo à bille Tops 505 F noir SCHNEIDER", cat:"Écriture", price:150, image:""},
+  {id:"p9", name:"Stylo à bille Tops 505 SCHNEIDER", cat:"Écriture", price:150, image:"images/produits/9bleu.webp",
+   colors:[{name:"Bleu",hex:"#2446C4",image:"images/produits/9bleu.webp"},{name:"Noir",hex:"#1A1A1A",image:"images/produits/9noir.webp"},{name:"Rouge",hex:"#D62B2B",image:"images/produits/9rouge.webp"},{name:"Vert",hex:"#1E9A4A",image:"images/produits/9vert.webp"}]},
   {id:"p10", name:"Bâton de colle 21g Coloured MILAN", cat:"Papeterie", price:1000, image:"images/produits/10orange.webp", colors:[{name:"Orange",hex:"#E8853A",image:"images/produits/10orange.webp"},{name:"Rose",hex:"#E86A9A",image:"images/produits/10rose.webp"}]},
   {id:"p11", name:"Surligneurs Classic assortis x4 MAPED", cat:"Écriture", price:2250, image:"images/produits/11.webp"},
   {id:"p12", name:"Surligneurs Pastel assortis x4 MAPED", cat:"Écriture", price:2500, image:"images/produits/12.webp"},
@@ -120,12 +139,12 @@ const ARTICLES = [
   {id:"p27", name:"Stylo à bille vert BIC Cristal", cat:"Écriture", price:100, image:"images/produits/27.webp"},
   {id:"p28", name:"Kit de traçage 15cm 4pcs MAPED", cat:"Traçage", price:700, image:"images/produits/28.webp"},
   {id:"p29", name:"Correcteur liquide", cat:"Correction", price:300, image:"images/produits/29.webp"},
-  {id:"p30", name:"Scotch", cat:"Papeterie", price:350, image:""},
-  {id:"p31", name:"Critérium 0,7mm", cat:"Écriture", price:850, image:""},
-  {id:"p32", name:"Mines 0,7mm MAPED", cat:"Écriture", price:350, image:""},
+  {id:"p30", name:"Scotch", cat:"Papeterie", price:350, image:"images/produits/30.webp"},
+  {id:"p31", name:"Critérium 0,7mm", cat:"Écriture", price:850, image:"images/produits/31.webp"},
+  {id:"p32", name:"Mines 0,7mm MAPED", cat:"Écriture", price:350, image:"images/produits/32.webp"},
   {id:"p33", name:"Lot de 12 stylos gel multicolores LINC Pentonic", cat:"Écriture", price:2500, image:"images/produits/33.webp"},
   {id:"p34", name:"Classeur 100 vues Exacompta", cat:"Rangement", price:2700, image:"images/produits/34.webp"},
-  {id:"p35", name:"Notebook A4", cat:"Rangement", price:2500, image:""}
+  {id:"p35", name:"Notebook A4 à spirale", cat:"Rangement", price:2500, image:"images/produits/35.webp"}
 ];
 
 /* Catégories déduites des données : pas de liste à maintenir à la main.
@@ -281,13 +300,36 @@ function cardQty(id, delta){
 
 // Sélection d'une couleur : change l'image + met à jour le compteur de CETTE couleur
 const selectedColors = {};
+/* Change la photo de la carte ET de la fiche quand on choisit une couleur.
+   On teste d'abord que le fichier existe : si la photo de cette couleur n'est
+   pas encore uploadée, on affiche "Photo bientôt" ; et en recliquant sur une
+   couleur qui a sa photo, l'image revient (avant, elle ne revenait plus). */
+function showColorImage(item, src){
+  const render = ok => {
+    const card = document.querySelector('#card-'+CSS.escape(item.id)+' .article-img-wrap');
+    if(card){
+      const badge = card.querySelector('.article-badge');
+      card.innerHTML = (badge ? badge.outerHTML : '') + (ok
+        ? `<img id="img-${item.id}" src="${src}" alt="${attr(item.name)}" loading="lazy" decoding="async" onerror="productImgFallback(this)">`
+        : noImgHtml());
+    }
+    const modal = document.getElementById('modalMedia');
+    if(modal && document.getElementById('modalAction') && document.getElementById('modalAction').dataset.id === item.id){
+      modal.innerHTML = ok ? `<img id="modalImg" src="${src}" alt="${attr(item.name)}">` : noImgHtml();
+    }
+  };
+  if(!src){ render(false); return; }
+  const probe = new Image();
+  probe.onload = () => render(true);
+  probe.onerror = () => render(false);
+  probe.src = src;
+}
+
 function selectColor(id, idx){
   const item = findItem(id);
   if(!item || !item.colors) return;
   selectedColors[id] = idx;
-  [document.getElementById('img-'+id), document.getElementById('modalImg')].forEach(img=>{
-    if(img && item.colors[idx].image) img.src = item.colors[idx].image;
-  });
+  showColorImage(item, item.colors[idx].image || item.image);
   ['#card-'+CSS.escape(id), '#modalColors'].forEach(sel=>{
     const group = document.querySelector(sel);
     if(!group) return;
